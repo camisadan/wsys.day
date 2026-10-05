@@ -1,0 +1,117 @@
+@font-face {
+    font-family: "MSW98UI";
+    src: url("/static/fonts/MSW98UI-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "MSW98UI";
+    src: url("/static/fonts/MSW98UI-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+}
+
+
+@view-transition {
+  navigation: auto;
+}
+
+html,
+body {
+    min-height: 100%;
+    margin: 0;
+}
+
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: rgb(42, 42, 42);
+    color: #d6d6d6;
+    font-family: "MSW98UI", sans-serif;
+}
+
+
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: -20px;
+    z-index: -1;
+    filter: blur(10px);
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    pointer-events: none;
+
+    background: radial-gradient(
+        ellipse at center,
+        transparent 60%,
+        rgba(7, 7, 7, 0.508) 100%
+    );
+}
+
+
+.font-msw98 {
+    font-family: "MSW98UI", sans-serif;
+}
+
+
+.fill-text {
+    display: block;
+    font-size: clamp(1rem, 5vw, 4rem);
+    line-height: 1;
+}
+
+.main-section {
+    max-width: 50rem;
+}
+
+.panel {
+    border: 2px solid #d6d6d6;
+    background: rgba(13, 13, 13, 0.9);
+    backdrop-filter: blur(10px);
+}
+
+.header {
+    height: 140px;
+}
+
+.sidebar {
+    min-height: 440px;
+}
+
+.nav-box {
+    height: 60px;
+    border-bottom: 2px solid #d6d6d6;
+}
+
+.content {
+    min-height: 440px;
+}
+
+.placeholder {
+    width: 125px;
+    height: 125px;
+    border: 2px solid #d6d6d6;
+}
+
+.ruffle-window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    z-index: 999999;
+
+    width: 800px;
+    height: 600px;
+
+    background: black;
+}
