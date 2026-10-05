@@ -12,10 +12,29 @@
     font-style: normal;
 }
 
-
-@view-transition {
-  navigation: auto;
+@font-face {
+    font-family: "Panic!";
+    src:
+        url("/static/fonts/ExtraOrnamentalNo2.woff2") format("woff2"),
+        url("/static/fonts/ExtraOrnamentalNo2.woff") format("woff");
+    font-style: normal;
 }
+
+
+
+html { /*VARS*/
+    --dot-bg: #b14c4c;
+    --dot-colour: #760029;
+    --dot-size: 1px;
+    --dot-space: 9px;
+    --dot-rotor: 10deg;
+
+    --text-colour: #ffc437;
+
+
+
+}
+
 
 html,
 body {
@@ -23,43 +42,30 @@ body {
     margin: 0;
 }
 
-
 body {
     min-height: 100vh;
     overflow-x: hidden;
-    background: rgb(42, 42, 42);
-    color: #d6d6d6;
+    margin: 0;
+
+    background:
+        radial-gradient(
+            circle,
+            var(--dot-bg) var(--dot-size),
+            transparent calc(var(--dot-size) + 1px)
+        ) center / var(--dot-space) var(--dot-space),
+        var(--dot-colour);
+
+    color: var(--text-colour);
     font-family: "MSW98UI", sans-serif;
-}
-
-
-
-body::after {
-    content: "";
-    position: fixed;
-    inset: -20px;
-    z-index: -1;
-    filter: blur(10px);
-}
-
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-
-    pointer-events: none;
-
-    background: radial-gradient(
-        ellipse at center,
-        transparent 60%,
-        rgba(7, 7, 7, 0.508) 100%
-    );
 }
 
 
 .font-msw98 {
     font-family: "MSW98UI", sans-serif;
+}
+
+.font-patd {
+    font-family: "Panic!", sans-serif;
 }
 
 
@@ -69,32 +75,41 @@ body::before {
     line-height: 1;
 }
 
+
 .main-section {
     max-width: 50rem;
 }
 
+
 .panel {
     border: 2px solid #d6d6d6;
-    background: rgba(13, 13, 13, 0.9);
+    background: #64102A;
     backdrop-filter: blur(10px);
 }
+
 
 .header {
     height: 140px;
 }
 
+
+
+
 .sidebar {
     min-height: 440px;
 }
+
 
 .nav-box {
     height: 60px;
     border-bottom: 2px solid #d6d6d6;
 }
 
+
 .content {
     min-height: 440px;
 }
+
 
 .placeholder {
     width: 125px;
@@ -102,10 +117,12 @@ body::before {
     border: 2px solid #d6d6d6;
 }
 
+
 .ruffle-window {
     position: fixed;
     top: 50%;
     left: 50%;
+
     transform: translate(-50%, -50%);
 
     z-index: 999999;
