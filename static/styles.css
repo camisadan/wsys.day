@@ -20,7 +20,13 @@
     font-style: normal;
 }
 
-
+@font-face {
+    font-family: "Dotmatrix";
+    src:
+        url("/static/fonts/DotMatrixQuad-Regular.woff2") format("woff2"),
+        url("/static/fonts/DotMatrixQuad-Regular.woff") format("woff");
+    font-style: normal;
+}
 
 html { /*VARS*/
     --dot-bg: #b14c4c;
@@ -67,6 +73,10 @@ body {
 .font-patd {
     font-family: "Panic!", sans-serif;
 }
+.font-dotmatrix {
+    font-family: "Dotmatrix", sans-serif;
+}
+
 
 
 .fill-text {
@@ -82,7 +92,7 @@ body {
 
 
 .panel {
-    border: 2px solid #d6d6d6;
+    border: 2px solid #d6d6d6 !important;
     background: #64102A;
     backdrop-filter: blur(10px);
 }
@@ -93,6 +103,10 @@ body {
 }
 
 
+
+@view-transition {
+  navigation: auto;
+}
 
 
 .sidebar {
