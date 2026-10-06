@@ -5,19 +5,15 @@
         "id": "projectexample",
         "imagehref" :"/static/monkey.png",
 
-        "playbill": {
-            "title":"Project Title",
-            "content":[
-                "test",
-                "1234"
-            ]
-        }
-
+        "innerHTML" :"<h1>Project</h1><br><p>For this project, I projected a project onto a plane to project my power of programming</p>"
     },
     {
-        "title": "Another Project",
-        "desc": "This project does something rather interesting.",
-        "id": "anotherproject"
+        "title": "Projectus",
+        "desc": "This is a witty project desc. it is so funny. JS too.",
+        "id": "projectexample2",
+        "imagehref" :"/static/background.jpeg",
+
+        "innerHTML" :"<h1>Projectus</h1><br><p>Pic of my mediocre school ehehehehe</p>"
     },
     {
         "title": "Yet Another Project",
