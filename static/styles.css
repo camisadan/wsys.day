@@ -28,6 +28,14 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: "Ornate";
+    src:
+        url("/static/fonts/Goudy\ Ornate\ MT\ Std.woff2") format("woff2"),
+        url("/static/fonts/Goudy\ Ornate\ MT\ Std.woff") format("woff");
+    font-style: normal;
+}
+
 html { /*VARS*/
     --dot-bg: #b14c4c;
     --dot-colour: #760029;
@@ -60,21 +68,47 @@ body {
             transparent calc(var(--dot-size) + 1px)
         ) center / var(--dot-space) var(--dot-space),
         var(--dot-colour);
-
-    color: var(--text-colour);
+color: var(--text-colour);
+    
     font-family: "MSW98UI", sans-serif;
 }
 
+
+.btn {
+    color: color-mix(in srgb, var(--text-colour), white 50%) !important;
+}
+.btn-panic {
+    background-color: var(--dot-bg);
+}
 
 .font-msw98 {
     font-family: "MSW98UI", sans-serif;
 }
-
 .font-patd {
     font-family: "Panic!", sans-serif;
 }
 .font-dotmatrix {
     font-family: "Dotmatrix", sans-serif;
+}
+.font-ornate {
+    font-family: "Ornate", sans-serif;
+}
+
+
+.project-pane {
+    background-color: rgb(36, 36, 36) !important;
+    height: 20rem;
+}
+.project-title {
+    top:1rem;
+
+}
+.project-body {
+    
+}
+
+.abs {
+    position: absolute;
 }
 
 
@@ -85,6 +119,115 @@ body {
     line-height: 1;
 }
 
+.curtain-left::before {
+    content: "";
+
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 50vw;
+    height: 100vh;
+
+    background: linear-gradient(
+        90deg,
+        rgba(54, 0, 0, 1) 0%,
+        rgba(158, 0, 0, 1) 11%,
+        rgba(59, 0, 0, 1) 18%,
+        rgba(173, 0, 0, 1) 27%,
+        rgba(69, 0, 0, 1) 35%,
+        rgba(142, 0, 0, 1) 43%,
+        rgba(51, 0, 0, 1) 52%,
+        rgba(132, 0, 0, 1) 61%,
+        rgba(59, 0, 0, 1) 70%,
+        rgba(123, 0, 0, 1) 79%,
+        rgba(56, 0, 0, 1) 87%,
+        rgba(115, 0, 0, 1) 94%,
+        rgba(112, 0, 0, 1) 100%
+    );
+
+    z-index: 9999;
+
+    animation: curtain-left-open 2s ease-in-out forwards;
+}
+
+.curtain-right::before {
+    content: "";
+
+    position: fixed;
+    left: 50vw;
+    top: 0;
+    width: 50vw;
+    height: 100vh;
+
+    background: linear-gradient(
+        90deg,
+        rgba(54, 0, 0, 1) 0%,
+        rgba(158, 0, 0, 1) 11%,
+        rgba(59, 0, 0, 1) 18%,
+        rgba(173, 0, 0, 1) 27%,
+        rgba(69, 0, 0, 1) 35%,
+        rgba(142, 0, 0, 1) 43%,
+        rgba(51, 0, 0, 1) 52%,
+        rgba(132, 0, 0, 1) 61%,
+        rgba(59, 0, 0, 1) 70%,
+        rgba(123, 0, 0, 1) 79%,
+        rgba(56, 0, 0, 1) 87%,
+        rgba(115, 0, 0, 1) 94%,
+        rgba(112, 0, 0, 1) 100%
+    );
+
+    z-index: 9999;
+
+    animation: curtain-right-open 2s ease-in-out forwards;
+}
+
+@keyframes curtain-left-open {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes curtain-right-open {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes curtain-left-close {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes curtain-right-close {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+.curtain-left.close::before {
+    animation: curtain-left-close 1s ease-in-out forwards;
+}
+
+.curtain-right.close::before {
+    animation: curtain-right-close 1s ease-in-out forwards;
+}
 
 .main-section {
     max-width: 50rem;
