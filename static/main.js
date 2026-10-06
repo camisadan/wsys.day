@@ -1,16 +1,3 @@
-function RandomQuote() {
-    const quotes = [
-        "And if a double-decker bus crashes into us...",
-        "Please leave all over-coats, canes & top-hats with the doorman.",
-        "And if my voice occasionally cracks...",
-        "It's these substandard motels on the Corner of 4th & Fremont St.",
-        "This is my first video on Instagram.",
-        "A picturesque score of passing HTML."
-    ];
-
-    const el = document.getElementById("WittyQuoteBox(R)");
-    el.textContent = quotes[Math.floor(Math.random() * quotes.length)];
-}
 
 function wait(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -26,10 +13,9 @@ async function CloseCurtains() {
 document.addEventListener("click", async (event) => {
     const a = event.target.closest("a[href]");
 
-    if (!a || event.defaultPrevented) {
+    if (!a || event.defaultPrevented || a.classList.contains("no-curtains")) {
         return;
     }
-
     if (
         event.button !== 0 ||
         event.metaKey ||
@@ -50,4 +36,3 @@ document.addEventListener("click", async (event) => {
     window.location.href = href;
 });
 
-RandomQuote();

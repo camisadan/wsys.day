@@ -1,0 +1,27 @@
+[
+    {
+        "title": "Project Title",
+        "desc": "This is a witty project desc. it is so eeffoc. JS too.",
+        "id": "projectexample",
+        "imagehref" :"/static/monkey.png",
+
+        "playbill": {
+            "title":"Project Title",
+            "content":[
+                "test",
+                "1234"
+            ]
+        }
+
+    },
+    {
+        "title": "Another Project",
+        "desc": "This project does something rather interesting.",
+        "id": "anotherproject"
+    },
+    {
+        "title": "Yet Another Project",
+        "desc": "A third project, because apparently two wasn't enough.",
+        "id": "thirdproject"
+    }
+]

@@ -134,16 +134,35 @@
                 </div>
 
             </div>
-            <p class="small mt-2">Site Version / Deployment 1.0.0</p>
+            <a class="small mt-2 text-decoration-none text-reset" target="_blank"
+                href="https://github.com/camisadan/wsys.day">Site Version / Deployment 1.0.0</a>
 
 
         </div>
 
-    
-        <span class="curtain-left" id="curtain-left"></span>
-        <span class="curtain-right" id="curtain-right"></span>
+
+        <span class="curtain curtain-left " id="curtain-left"></span>
+        <span class="curtain curtain-right " id="curtain-right"></span>
 
     </div>
     <script src="/static/main.js"></script>
-</body> 
+    <script>
+        function RandomQuote() {
+            const quotes = [
+                "And if a double-decker bus crashes into us...",
+                "Please leave all over-coats, canes & top-hats with the doorman.",
+                "And if my voice occasionally cracks...",
+                "It's these substandard motels on the Corner of 4th & Fremont St.",
+                "This is my first video on Instagram.",
+                "A picturesque score of passing HTML."
+            ];
+
+            const el = document.getElementById("WittyQuoteBox(R)");
+            el.textContent = quotes[Math.floor(Math.random() * quotes.length)];
+        }
+
+        RandomQuote
+    </script>
+</body>
+
 </html>

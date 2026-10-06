@@ -23,7 +23,7 @@
         </div>
 
         <div class="panel py-1 mb-3 text-center">
-            <span class="font-dotmatrix align-middle">My Projects</span>
+            <span class="font-dotmatrix align-middle">About this Website</span>
         </div>
 
         <div class="row g-3">
@@ -115,28 +115,61 @@
 
             <div class="col-12 col-md-9">
                 <div class="panel content p-3">
-                    <p>Below this message is a list of past and currently work-in-progress projects.<br> More can be
-                        seen on my GitHub Profile. Some projects are old, some new, some work in progress, some very
-                        forgotten. I'm constantly working on things, so there's usually something interesting going on
-                        either way.</p>
+                    <p>
+                        This site, my personal site, serves as my portfolio and a gateway/distributor for my C.V.<br>
+                        Theme-wise, it's based on the album cover of <b>A Fever You Can't Sweat Out by Panic! At The
+                            Disco.</b>
+                        That, combined with a kind of early-internettish feeling with the static width and bitmap font.
+
+                    </p>
+
+                    <img id="album-cover" style="width: 13rem;" alt="Album cover">
+                    <br>
+                    <audio id="audio" controls style="width: 13rem;">
+                        <source src="/music/afycso.mp3" type="audio/mpeg">
+                    </audio>
+
+                    <script src="https://cdn.jsdelivr.net/npm/jsmediatags@3.9.7/dist/jsmediatags.min.js"></script>
+                    <script>
+                        const cover = document.getElementById("album-cover");
+                        const mp3 = "/music/afycso.mp3";
+
+                        fetch(mp3)
+                            .then(response => response.blob())
+                            .then(blob => {
+                                jsmediatags.read(blob, {
+                                    onSuccess: ({ tags }) => {
+                                        if (!tags.picture)
+                                            return;
+
+                                        let data = "";
+
+                                        for (const byte of tags.picture.data)
+                                            data += String.fromCharCode(byte);
+
+                                        cover.src = `data:${tags.picture.format};base64,${btoa(data)}`;
+                                    },
+
+                                    onError: error => {
+                                        console.error("Failed to read MP3 metadata:", error);
+                                    }
+                                });
+                            })
+                            .catch(error => {
+                                console.error("Failed to fetch MP3:", error);
+                            });
+                    </script>
                 </div>
 
             </div>
         </div>
 
 
-        <div class="panel mt-3 py-3 px-3 mb-3 text-center" id="project-container">
-
-
-
-
-        </div>
 
 
     </div>
 
     </div>
-
 
     <span class="curtain-left" id="curtain-left"></span>
     <span class="curtain-right" id="curtain-right"></span>
@@ -144,6 +177,5 @@
 </body>
 
 <script src="/static/main.js"></script>
-<script src="/static/projects.js"></script>
 
 </html>
