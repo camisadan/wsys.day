@@ -8,12 +8,12 @@
         "innerHTML" :"<h1>Carbon Framework</h1><p>Carbon Framework is a (currently, W-I-P Closed Source) Garry's Mod Gamemode Framework, built in gLua. Opposed to standard gamemode frameworks, CFW uses a binary <a href='https://github.com/feeeedox/gmsv_mongo' target='_blank'>MongoDB Driver</a> to store data, opposed to the classical usage of SQL/Lite, commonly used in this field.</p><p>Carbon provides the server owner with relatively unopinionated gameplay primitives to craft their own unique experience and allow for infinite expandability, all through an easy global API.</p><h4> Currently Implemented Features:</h4><ul><li>Items System</li><li>Networking Abstractions (RemoteFunctions, Ordered Serialisation)</li><li>Database Access Abstractions</li><li>User Interface Primitives</li><li>User Data System (Super easy assignment of unique user data)</li></ul><p>All this, while also being developer-oriented and providing a base schema for developers to expand from.</p>"
     },
     {
-        "title": "Projectus",
-        "desc": "This is a witty project desc. it is so funny. JS too.",
+        "title": "GoveeOverHTTP",
+        "desc": "PyQuart Govee API Web UI Wrapper.",
         "id": "projectexample2",
-        "imagehref" :"/static/background.jpeg",
+        "imagehref" :"https://picsum.photos/400/720",
 
-        "innerHTML" :"<h1>Projectus</h1><br><p>Pic of my mediocre school ehehehehe</p>"
+        "innerHTML" :"<h1>GoveeOverHTTP</h1><p>Extract from <code>README.md</code>:</p><blockquote>I have a rather annoyingly common situation. I have a set of H613E Govee BLE lights. I love them dearly, except I despise their manufacturer. Govee's app is slow, mobile only with no pc build, clunky, bloated, and full to the absolute brim with advertisements for their other products. Also, they refuse to release an official BLE bridge. Hence: GOH.</blockquote><p>GOH provides an accessible Web Interface to the Python library <a target=_blank href=https://pypi.org/project/govee-api-ble/>govee-api-ble</a>. It provides a brightness slider, light toggle, colour control and a basic API.</p><h4>Planned Features:</h4><ul><li>Heartbeat WebSocket</li><li>Self-rewrite of govee-api-ble (unlikely)</li><li>Improved UI</li><li>Lighting Scheduler</li><li>Advanced Sequencing</li></ul><a class='btn btn-danger' href=https://github.com/camisadan/GoveeOverHTTP target=_blank>View Project on GitHub <i class='bi bi-github'></i></a>"
     },
     {
         "title": "Yet Another Project",
