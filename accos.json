@@ -6,7 +6,7 @@
         "imagehref" :"https://picsum.photos/seed/disklarity/400/720",
         "is_bigboy":false,
         "innerHTML":"<p>erm</p>",
-        "debug":true
+        "debug":false
     },
     {
         "title":"Work Experience",

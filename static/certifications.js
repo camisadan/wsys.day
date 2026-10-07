@@ -36,7 +36,7 @@ async function ConstructCard(title, content, id, imagehref, is_bigboy) {
                 <div class="acco-desc font-ornate">${content}</div>
                 <img src="https://placehold.co/400" class="acco-pin"></img>
                 <img src="${imagehref}" class="acco-image">
-                <div class="btn btn-danger acco-btn" href="javascript:ShowPlaybill(${id})">View Info</div>
+                <div class="btn btn-danger acco-btn" href="javascript:ShowPlaybill(${id})"> <i class="bi bi-info-circle"></i></div>
             </div>
             `)
         } else { // then left
