@@ -526,6 +526,10 @@ body {
         1px 1px 0 rgba(255, 255, 255, 0.3);
 }
 
+.playbill * {
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+
 .playbill h1::after {
     content: "";
 
