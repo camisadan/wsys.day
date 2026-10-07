@@ -29,8 +29,11 @@
             </div>
         </div>
 
+
+
+
         <div class="panel py-1 mb-3 text-center">
-            <span class="font-dotmatrix align-middle">My Projects</span>
+            <span class="font-dotmatrix align-middle">My Certifications / Accolades</span>
         </div>
 
         <div class="row g-3">
@@ -56,7 +59,7 @@
 
                             <div class="lh-sm">
                                 <div class="fw-bold small">Projects</div>
-                                <div class="small">You are here.</div>
+                                <div class="small">Things I've made.</div>
                             </div>
                         </div>
                     </a>
@@ -67,7 +70,7 @@
 
                             <div class="lh-sm">
                                 <div class="fw-bold small">Certifications</div>
-                                <div class="small">& Accolades.</div>
+                                <div class="small">You are here.</div>
                             </div>
                         </div>
                     </a>
@@ -122,39 +125,42 @@
 
             <div class="col-12 col-md-9">
                 <div class="panel content p-3">
-                    <p>Below this message is a list of past and currently work-in-progress projects.<br> More can be
-                        seen on my GitHub Profile. Some projects are old, some new, some work in progress, some very
-                        forgotten. I'm constantly working on things, so there's usually something interesting going on
-                        either way.</p>
+                     <p>
+                        This page contains any and all of my Certifications, Accolades and Certifications. At the time of writing this, not many.
+                     </p>
+                     <h1 class="font-egyptienne">Scroll Down<span class="fw-bold" style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 124%;">!</span></h1>
                 </div>
 
             </div>
-        </div>
-
-
-        <div class="panel mt-3 py-0 px-3 mb-3 text-center" id="project-container">
-
+            <a class="small mt-2 text-decoration-none text-reset" target="_blank"
+                href="https://github.com/camisadan/wsys.day">Site Version / Deployment 1.0.0</a>
 
 
         </div>
 
 
-    </div>
+        <span class="curtain curtain-left " id="curtain-left"></span>
+        <span class="curtain curtain-right " id="curtain-right"></span>
 
     </div>
+    <script src="/static/main.js"></script>
+    <script>
+        function RandomQuote() {
+            const quotes = [
+                "And if a double-decker bus crashes into us...",
+                "Please leave all over-coats, canes & top-hats with the doorman.",
+                "And if my voice occasionally cracks...",
+                "It's these substandard motels on the Corner of 4th & Fremont St.",
+                "This is my first video on Instagram.",
+                "A picturesque score of passing HTML."
+            ];
 
+            const el = document.getElementById("WittyQuoteBox(R)");
+            el.textContent = quotes[Math.floor(Math.random() * quotes.length)];
+        }
 
-    <div class="playbill" id="playbill">
-    <button class="playbill-close" onclick="ClosePlaybill()">×</button>
-        
-    </div>
-
-    <span class="curtain-left" id="curtain-left"></span>
-    <span class="curtain-right" id="curtain-right"></span>
-
+        RandomQuote();
+    </script>
 </body>
-
-<script src="/static/main.js"></script>
-<script src="/static/projects.js"></script>
 
 </html>

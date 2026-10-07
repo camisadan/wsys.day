@@ -23,10 +23,10 @@
         "innerHTML":"<h1>Disklarity</h1><p>Disklarity is a Disk Capacity Verification Tool built in Python, using the WMI interfaces. Currently, it is out of development and only supports WindowsNT based devices, due to the WMI-Based implementation I wrote at the time.</p><p>It is a program similar to Gibson Research's ValiDrive, intending to detect fake sectors on shadys storage devices. It successfully detected a fake 1TiB Flash Drive from AliExpress as only being 4GiB.</p>"
     },
         {
-        "title": "Yet Another Project",
-        "desc": "A third project, because apparently two wasn't enough.",
-        "id": "thirdproject",
+        "title": "HTML Skeleton Gen.",
+        "desc": "Simple WebApp.",
+        "id": "skellygen",
                 "imagehref" :"https://picsum.photos/seed/test/400/720",
-        "innerHTML":"<h1>ProjectExample</h1>"
+        "innerHTML":"<h1>HTML Skeleton Generator</h1><p>Not a particularly advanced nor recent project, but still worth putting here. A simple web interface to create HTML skeleton with specified variables. My first JS app, actually.</p>"
     }
 ]
