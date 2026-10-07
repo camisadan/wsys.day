@@ -100,13 +100,12 @@ body {
         radial-gradient(circle,
             var(--dot-bg) var(--dot-size),
             transparent calc(var(--dot-size) + 1px)) center / var(--dot-space) var(--dot-space),
-        var(--dot-colour) linear-gradient(rgba(0, 0, 0, 0), rgba(50, 50, 50, 0.473));
+        var(--dot-colour);
 
 
     color: var(--text-colour);
 
     font-family: "MSW98UI", sans-serif;
-    background-blend-mode: multiply;
 
 }
 
@@ -388,7 +387,7 @@ body {
 
 .panel {
     border: 2px solid #d6d6d6 !important;
-    background-image: linear-gradient(#811537, #64102A);
+    background-image: linear-gradient(#5c0e27, #450b1d);
     backdrop-filter: blur(10px);
 
 
@@ -396,11 +395,13 @@ body {
 
 
 .header {
-    height: 140px;
+    height: 7rem;
 }
 
 
-
+h1 {
+    text-wrap-style:pretty;
+}
 @view-transition {
     navigation: auto;
 }
