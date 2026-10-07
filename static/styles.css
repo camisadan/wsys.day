@@ -595,3 +595,91 @@ body {
 .playbill a:hover {
     color: #a0003e;
 }
+
+/*Acco/cert page bs*/
+
+.accolade-left {
+    background-image: linear-gradient(#a0003e,#6c0029);
+    padding: 1rem;
+    margin-top:1rem;
+    margin-bottom: 1rem;
+    min-height: 6.5rem;
+-webkit-box-shadow: 0px 3px 15px 5px #0000008a; 
+box-shadow: 0px 3px 15px 5px #0000008a;
+}
+
+.accolade-left .acco-title {
+    font-size: 3.5rem !important;
+    position:  absolute;
+    left:1.5rem;
+    top:1.2rem;
+}
+
+.accolade-left .acco-desc {
+    font-size: 1.5rem !important;
+    position:  absolute;
+    left:1.7rem;
+    bottom:1.2rem;
+}
+
+.accolade-left .acco-pin {
+    right:2.1rem;
+    bottom:2rem;
+    position: absolute;
+    max-width: 2.5rem;
+    min-width: 2.5rem;
+    transform: rotate(-4deg);
+    content: url("/static/famfamgold.svg");
+    z-index:3
+}
+
+.accolade-left .acco-image {
+    right:4rem;
+    position: absolute;
+    max-width: 5rem;
+    transform: rotate(4deg);
+    z-index:2
+}
+
+.accolade-right {
+    background-image: linear-gradient(#a0003e,#6c0029);
+    padding: 1rem;
+    margin-top:1rem;
+    margin-bottom: 1rem;
+    min-height: 6.5rem;
+-webkit-box-shadow: 0px 3px 15px 5px #0000008a; 
+box-shadow: 0px 3px 15px 5px #0000008a;
+}
+
+.accolade-right .acco-title {
+    font-size: 3.5rem !important;
+    position:  absolute;
+    right:1.5rem;
+    top:1.2rem;
+}
+
+.accolade-right .acco-desc {
+    font-size: 1.5rem !important;
+    position:  absolute;
+    right:1.7rem;
+    bottom:1.2rem;
+}
+
+.accolade-right .acco-pin {
+    left:2.1rem;
+    bottom:2rem;
+    position: absolute;
+    max-width: 2.5rem;
+    min-width: 2.5rem;
+    transform: rotate(4deg);
+    content: url("/static/famfamgold.svg");
+    z-index:3
+}
+
+.accolade-right .acco-image {
+    left:4rem;
+    position: absolute;
+    max-width: 5rem;
+    transform: rotate(-4deg);
+    z-index:2
+}
