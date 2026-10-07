@@ -395,7 +395,9 @@ body {
 
 
 .header {
-    height: 7rem;
+    height: 9rem;
+    padding-top:1rem;
+    padding-bottom: 1rem;
 }
 
 
