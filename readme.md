@@ -7,3 +7,9 @@ This Repository serves as version control and a push system for my personal webs
 #### projects.json
 - Populate projects with real images.
 - Add GitHub links to more projects
+
+#### Global
+- Normalise image formats / do this in build process
+- Add Build Workflow
+
+- Actually deploy site??!?

@@ -1,0 +1,20 @@
+[
+    {
+        "title":"Test Card",
+        "desc":"This is a test.",
+        "id":"test",
+        "imagehref" :"https://picsum.photos/seed/disklarity/400/720",
+        "is_bigboy":false,
+        "innerHTML":"<p>erm</p>",
+        "debug":true
+    },
+    {
+        "title":"Work Experience",
+        "desc":"@ Strat7 ResearchBods Leeds",
+        "id":"rbods",
+        "imagehref":"/static/accolades/strat7.jpg",
+        "is_bigboy":true,
+        "innerHTML":"<h1>Work Experience</h1><h3>@ Strat7 ResearchBods</h3><p>During the August of 2026, I completed a week of Work Experience in the I.T Department of Strat7 ResearchBods.<p>During this time, I gained experience in Enterprise systems such as AvePoint Backup, HALO Ticketing, Basic Entra Operations, and recieved GDPR training during onboarding. I decommissioned broken and old laptops and catalogued storage devices for destruction. It was honestly, very very fun. The coffee machine was brilliant too.",
+        "debug":false
+    }
+]
