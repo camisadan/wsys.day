@@ -4,4 +4,4 @@ This Repository serves as version control and a push system for my personal webs
 
 
 ### TODO:
-- Add some form of 3D objects stacking up on the sides of the page, persisting per-page and eventually flushing out to re-accumulate.
+- Populate projects with real images.

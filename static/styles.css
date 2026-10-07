@@ -111,20 +111,30 @@ body {
     color: color-mix(in srgb, var(--text-colour), white 50%) !important;
 }
 
-
+@keyframes paneload {
+	0% {
+		opacity: 0;
+        filter:blur(10px);
+	}
+	100% {
+		opacity: 1;
+        filter:blur(0px);
+	}
+}
 
 .project-pane {
     background-color: rgb(36, 36, 36) !important;
     height: 20rem;
     overflow: hidden;
-}
-
-.project-pane {
+    animation: paneload 2s ease-in;
     transition:
         transform .5s ease-in-out,
         box-shadow .5s ease-in-out;
-
+    filter:blur(0px);
     --rotation: 1deg;
+    opacity: 1;
+
+
 }
 
 .project-pane:hover {
@@ -374,6 +384,8 @@ body {
     border: 2px solid #d6d6d6 !important;
     background: #64102A;
     backdrop-filter: blur(10px);
+    
+  
 }
 
 
