@@ -4,4 +4,6 @@ This Repository serves as version control and a push system for my personal webs
 
 
 ### TODO:
+#### projects.json
 - Populate projects with real images.
+- Add GitHub links to more projects
