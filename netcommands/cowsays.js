@@ -53,9 +53,8 @@ async function PrintTTY(printtext, sleeptime = 10, newline = true) {
 const camisadoLib = {
     async track5(args) {
         await PrintTTY(`
- ________________________
-< ${toString(args.slice(1).join(" "))} >
- ------------------------
+ 
+   ${args.slice(1)} 
         \\   ^__^
          \\  (oo)\\_______
             (__)\\       )\\/\\

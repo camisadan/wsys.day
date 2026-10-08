@@ -17,17 +17,54 @@
         #TTY {
             overflow-y: auto;
             color:white;
+            background-color: black !important;
             font-family:'Courier New', Courier, monospace;
             font-variant-numeric: tabular-nums lining-nums;
             max-height: 300px;
             min-height: 100vh;
             white-space: pre-wrap;
         }
+        body {
+            background-color: black !important;
+            background-image: none;
+        }
+
+        /* Visible CRT overlay */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.00) 0px,
+      rgba(255, 255, 255, 0.00) 2px,
+      rgba(0, 255, 80, 0.18) 3px,
+      rgba(0, 255, 80, 0.18) 4px
+    );
+
+  box-shadow:
+    inset 0 0 120px rgba(0, 0, 0, 0.9),
+    inset 0 0 40px rgba(0, 255, 80, 0.25);
+
+  opacity: 1;
+}
+
+/* Make the actual content glow */
+body {
+  color: #baffba;
+  text-shadow:
+    0 0 3px #00ff55,
+    0 0 8px rgba(0, 255, 80, 0.7);
+}
     </style>
 
     <div class="container-fluid p-0">
 
-        <div class="panel bg-black m-0 p-2" contenteditable="false" id="TTY">
+        <div class="bg-black m-0 p-2" contenteditable="false" id="TTY">
 
 
 
