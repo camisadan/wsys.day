@@ -159,3 +159,11 @@ function dragElement(elmnt) {
     }
 }
 dragElement(document.getElementById("playbill"))
+document.addEventListener("mouseenter", (event) => {
+    const pane = event.target.closest(".project-pane");
+
+    if (!pane) return;
+
+    const rotation = Math.random() < 0.5 ? -1 : 1;
+    pane.style.setProperty("--rotation", `${rotation}deg`);
+}, true);
