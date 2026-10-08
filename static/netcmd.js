@@ -1,3 +1,6 @@
+// NeTTY - Netbased Teletypewriter
+// Allows me to store things on the site without making them instantly visible.
+
 const TTY = document.getElementById("TTY");
 
 
@@ -25,8 +28,12 @@ const AllowedUsernames = [
     "joejagger",
     "morrissey",
     "gerardway",
+    "petewentz",
+    "brendonurie",
+    "firstvideooninstagram",
     "aladeen",
-    "nuclearnadal"
+    "nuclearnadal",
+    "cornerof4thonfremontstreet"
 ];
 var ChosenUsername = "CheekyBoy";
 const FakeIP = `${Number1}.${Number2}.${Number3}.${Number4}`
@@ -162,14 +169,16 @@ async function CommandLoop() {
         Command = await Input();
         await PrintTTY("\n");
 
-        if (["exit", "logoff", "poweroff"].includes(Command)) {
+        const args = Command.trim().split(/\s+/);
+
+        if (["exit", "logoff", "poweroff"].includes(args[0])) {
             await PrintTTY("Exiting.");
             await sleep(1000);
             location.href = "/";
         }
 
         try {
-            Resp = await MakeRequest(`/netcommands/${Command}`);
+            Resp = await MakeRequest(`/netcommands/${args[0]}`);
         } catch (e) {
             await PrintTTY(`Request failed: ${e.message}`, 1, false);
             continue;
@@ -181,7 +190,6 @@ async function CommandLoop() {
         }
 
         Mime = Resp.headers.get("Content-Type").split(";")[0];
-
         if (Mime === "application/x-shockwave-flash") {
             await PrintTTY("Attempting to execute Shockwave Flash via Ruffle.\nCTRL+B TO EXIT.");
 
@@ -194,7 +202,7 @@ async function CommandLoop() {
             document.body.appendChild(player);
 
             await player.ruffle().load({
-                url: `/netcommands/${Command}`
+                url: `/netcommands/${args[0]}`
             });
 
             await new Promise(resolve => {
@@ -214,9 +222,9 @@ async function CommandLoop() {
         }
         if (Mime === "application/javascript" || Mime === "text/javascript") {
             try {
-                const { default: camisadoLib } = await import(`/netcommands/${Command}`);
+                const { default: camisadoLib } = await import(`/netcommands/${args[0]}`);
 
-                await camisadoLib.track5();
+                await camisadoLib.track5(args);
 
             } catch (e) {
                 await PrintTTY(`JS execution failed: ${e.message}`, 1, false);
@@ -229,12 +237,15 @@ async function CommandLoop() {
                 const response = await fetch(`/netcommands/${Command}`);
                 const data = await response.json();
                 await PrintTTY(`Located JSON file @ ${Command}`)
-                await PrintTTY(JSON.stringify(data, null, 4), 1,true);
+                await PrintTTY(JSON.stringify(data, null, 4), 1, true);
             } catch (e) {
                 await PrintTTY(`JSON parsing failed: ${e.message}`, 1, false);
             }
 
             continue;
+        }
+        if (Mime === "image/png") {
+
         }
     }
 }
@@ -252,7 +263,6 @@ async function RunNetCommandline() {
     await PrintTTY("[.................................] ", 20, false)
 
     await PrintTTY(` Connection Established.`)
-    await PrintTTY(String(Password))
     await PrintTTY("\n\n")
     await PrintTTY("Interactive Authentication Required.")
     await GetAuth();
@@ -262,7 +272,6 @@ async function RunNetCommandline() {
 }
 
 async function main() {
-    await sleep(300);
     await RunNetCommandline();
 }
 

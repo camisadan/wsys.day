@@ -51,9 +51,17 @@ async function PrintTTY(printtext, sleeptime = 10, newline = true) {
 
 
 const camisadoLib = {
-    async track5() {
-        await PrintTTY("Moo!");
-
+    async track5(args) {
+        await PrintTTY(`
+ ________________________
+< ${toString(args.slice(1).join(" "))} >
+ ------------------------
+        \\   ^__^
+         \\  (oo)\\_______
+            (__)\\       )\\/\\
+                ||----w |
+                ||     ||
+`,false);
     }
 };
 
