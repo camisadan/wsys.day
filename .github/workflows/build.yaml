@@ -95,9 +95,9 @@ jobs:
 
           while IFS= read -r -d '' file; do
             echo "Minifying CSS: $file"
-            clean-css -o "$file" "$file"
+            cleancss -o "$file" "$file"
           done < <(find dist -type f -iname '*.css' -print0)
-
+          
       - name: Minify JavaScript
         shell: bash
         run: |
