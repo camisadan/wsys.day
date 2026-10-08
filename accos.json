@@ -14,7 +14,7 @@
         "id":"rbods",
         "imagehref":"/static/accolades/strat7.jpg",
         "is_bigboy":true,
-        "innerHTML":"<h1>Work Experience</h1><h3>@ Strat7 ResearchBods</h3><p>During the August of 2026, I completed a week of Work Experience in the I.T Department of Strat7 ResearchBods.<p>During this time, I gained experience in Enterprise systems such as AvePoint Backup, HALO Ticketing, Basic Entra Operations, and recieved GDPR training during onboarding. I decommissioned broken and old laptops and catalogued storage devices for destruction. It was honestly, very very fun. The coffee machine was brilliant too.",
+        "innerHTML":"<h1>Work Experience</h1><h3>@ Strat7 ResearchBods</h3><p>During the August of 2026, I completed a week of Work Experience in the I.T Department of Strat7 ResearchBods.</p><a class='btn btn-danger' target='_blank' href='https://researchbods.strat7.com/' >Strat7 ResearchBods</a><br><br><h2>Strat7</h2><p>Strat7 is a global marketing research firm with many big profile customers, including but not limited to:</p><ul><li>Jet2Holidays</li><li>Morrisons</li><li>Costa Coffee</li><li>Paramount</li><li>National Trust</li></ul> <p>During this time, I gained experience in Enterprise systems such as AvePoint Backup, HALO Ticketing, Basic Entra Operations, and recieved GDPR training during onboarding. I decommissioned broken and old laptops and catalogued storage devices for destruction. It was honestly, very very fun. The coffee machine was brilliant too.</p><br><h3>Cheers, Rob!</h3>",
         "debug":false
     },
     {
