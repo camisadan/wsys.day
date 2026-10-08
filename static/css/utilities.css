@@ -42,7 +42,7 @@
     border: 2px solid #d6d6d6;
 }
 
-.ruffle-window {
+.tty-window {
     position: fixed;
     top: 50%;
     left: 50%;

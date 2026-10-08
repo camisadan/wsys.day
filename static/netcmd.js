@@ -198,7 +198,7 @@ async function CommandLoop() {
             const ruffle = window.RufflePlayer.newest();
             const player = ruffle.createPlayer();
 
-            player.classList.add("ruffle-window");
+            player.classList.add("tty-window");
             document.body.appendChild(player);
 
             await player.ruffle().load({
@@ -241,10 +241,72 @@ async function CommandLoop() {
                 await PrintTTY(`JSON parsing failed: ${e.message}`, 1, false);
             }
 
-            continue;
-        }
-        if (Mime === "text/plain") {
+            
+            
+            
+            
+            
+            if (Mime === "image/png") {
+    await PrintTTY(`Displaying ${args[0]}.`);
 
+    const uniqueId = `tty-img-${crypto.randomUUID()}`;
+
+    document.body.insertAdjacentHTML("beforeend", `
+        <div id="${uniqueId}"
+             class="tty-window bg-dark rounded shadow position-absolute"
+             style="z-index:1050; cursor:move;">
+
+            <button type="button"
+                    class="btn-close btn-close-white position-absolute top-0 end-0 m-2"
+                    aria-label="Close"
+                    onclick="document.getElementById('${uniqueId}')?.remove()">
+            </button>
+
+            <img src="${Resp.URI}"
+                 class="img-fluid rounded"
+                 alt="">
+        </div>
+    `);
+
+    const el = document.getElementById(uniqueId);
+
+    let dragging = false;
+    let offsetX = 0;
+    let offsetY = 0;
+
+    el.addEventListener("pointerdown", event => {
+        if (event.target.closest("button")) return;
+
+        dragging = true;
+        offsetX = event.clientX - el.offsetLeft;
+        offsetY = event.clientY - el.offsetTop;
+
+        el.setPointerCapture(event.pointerId);
+    });
+
+    el.addEventListener("pointermove", event => {
+        if (!dragging) return;
+
+        el.style.left = `${event.clientX - offsetX}px`;
+        el.style.top = `${event.clientY - offsetY}px`;
+    });
+
+    el.addEventListener("pointerup", () => {
+        dragging = false;
+    });
+
+    el.addEventListener("pointercancel", () => {
+        dragging = false;
+    });
+
+    continue;
+}
+            
+            
+            continue;
+        
+
+            
         }
     }
 }
