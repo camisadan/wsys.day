@@ -234,9 +234,8 @@ async function CommandLoop() {
         }
         if (Mime === "application/json") {
             try {
-                const response = await fetch(`/netcommands/${Command}`);
-                const data = await response.json();
-                await PrintTTY(`Located JSON file @ ${Command}`)
+                const data = await Resp.json();
+                await PrintTTY(`Located JavaScript Object Notation file @ ${args[0]}`)
                 await PrintTTY(JSON.stringify(data, null, 4), 1, true);
             } catch (e) {
                 await PrintTTY(`JSON parsing failed: ${e.message}`, 1, false);
@@ -244,7 +243,7 @@ async function CommandLoop() {
 
             continue;
         }
-        if (Mime === "image/png") {
+        if (Mime === "text/plain") {
 
         }
     }
