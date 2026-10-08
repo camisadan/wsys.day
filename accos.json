@@ -22,7 +22,7 @@
         "desc":"Regional Contest @ Sheffield Hallam",
         "id":"worst-contest-ever",
         "imagehref":"/static/accolades/hallam.jpg",
-        "innerHTML":"<h1>CyberSwitchUp</h1><p>In 2024, I attended the CyberSwitchUp competition, after being 'asked' (forced) to sign up by the Yorkshire & Humber Regional Organised Crime unit for the heinous crime of opening the UEFI on a school computer.<p>I placed 4th out of ~40 contestants, failing due to the incompetent environment, incorrectly set up systems and broken tasks, but still, 4th place is an achievement.<p>Tasks Completed:<ul><li>O.S.I.N.T (Open Source Intelligence)<li>TCP Packet Decoding<li>Basic JavaScript Exploiting<li>Ate a Chicken Tikka wrap</ul><p>Also, I had my Flipper Zero running the entire time broadcasting my website under the portal page of a network with the SSID of my GitHub username. Which was quite funny.",
+        "innerHTML":"<h1>Cyber Switch Up</h1><p>In 2024, I attended the CyberSwitchUp competition, after being 'asked' (forced) to sign up by the Yorkshire & Humber Regional Organised Crime unit for the heinous crime of opening the UEFI on a school computer.<p>I placed 4th out of ~40 contestants, failing due to the incompetent environment, incorrectly set up systems and broken tasks, but still, 4th place is an achievement.<p>Tasks Completed:<ul><li>O.S.I.N.T (Open Source Intelligence)<li>TCP Packet Decoding<li>Basic JavaScript Exploiting<li>Ate a Chicken Tikka wrap</ul><p>Also, I had my Flipper Zero running the entire time broadcasting my website under the portal page of a network with the SSID of my GitHub username. Which was quite funny.",
         "is_bigboy":true,
         "debug":false
     }
