@@ -395,15 +395,16 @@ body {
 
 
 .header {
-    height: 9rem;
-    padding-top:1rem;
+    max-height: 9rem;
+    padding-top: 1rem;
     padding-bottom: 1rem;
 }
 
 
 h1 {
-    text-wrap-style:pretty;
+    text-wrap-style: pretty;
 }
+
 @view-transition {
     navigation: auto;
 }
@@ -749,4 +750,12 @@ h1 {
 
 .accolade-right .acco-image {
     left: var(--image-offset);
+}
+
+/*additives*/
+
+.svg-icon {
+    width: 3rem;
+    height: 3rem;
+    object-fit: contain;
 }

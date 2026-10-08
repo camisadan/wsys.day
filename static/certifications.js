@@ -9,7 +9,7 @@ async function LoadProjects() {
 }
 
 const container = document.getElementById("project-container");
-var right = true; // stupid counter var. if left
+var right = true; // stupid counter var. if left then right
 async function ConstructCard(title, content, id, imagehref, is_bigboy) {
     if (is_bigboy) {
         container.insertAdjacentHTML("beforeend", `
