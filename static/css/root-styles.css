@@ -1,0 +1,44 @@
+html,
+body {
+    min-height: 100%;
+    margin: 0;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    margin: 0;
+
+    background:
+        radial-gradient(circle,
+            var(--dot-bg) var(--dot-size),
+            transparent calc(var(--dot-size) + 1px)) center / var(--dot-space) var(--dot-space),
+        var(--dot-colour);
+
+
+    color: var(--text-colour);
+
+    font-family: "MSW98UI", sans-serif;
+
+}
+
+
+html {
+    /*VARS*/
+    --dot-bg: #b14c4c;
+    --dot-colour: #760029;
+    --dot-size: 1px;
+    --dot-space: 9px;
+    --dot-rotor: 10deg;
+
+    --text-colour: #ffc437;
+
+}
+
+h1 {
+    text-wrap-style: pretty;
+}
+
+@view-transition {
+    navigation: auto;
+}

@@ -1,0 +1,151 @@
+
+/*Acco/cert page bs*/
+.accolade-left,
+.accolade-right {
+    position: relative;
+
+    min-height: 6.5rem;
+    margin: 1rem 0;
+    padding: 1rem;
+
+    background: linear-gradient(#a0003e, #6c0029);
+    box-shadow: 0 3px 15px 5px #0000008a;
+
+    --title-side: left;
+    --desc-side: left;
+    --btn-side: right;
+    --art-side: right;
+    --title-offset: 4.35rem;
+    --desc-offset: 4.7rem;
+    --btn-offset: 1rem;
+    --pin-offset: 2.1rem;
+    --image-offset: 4rem;
+    --pin-rotation: -4deg;
+    --image-rotation: 4deg;
+}
+
+
+/* Right-hand layout */
+
+.accolade-right {
+    --title-side: right;
+    --desc-side: right;
+    --btn-side: left;
+    --art-side: left;
+    --pin-rotation: 4deg;
+    --image-rotation: -4deg;
+}
+
+
+/* Text */
+
+.acco-title {
+    position: absolute;
+    bottom: 1.9rem;
+
+    margin: 0;
+
+    font-size: 2.5rem !important;
+}
+
+.accolade-left .acco-title {
+    left: var(--title-offset);
+}
+
+.accolade-right .acco-title {
+    right: var(--title-offset);
+}
+
+
+.acco-desc {
+    position: absolute;
+    bottom: .3rem;
+
+    margin: 0;
+
+    font-size: 1.5rem !important;
+}
+
+.accolade-left .acco-desc {
+    left: var(--desc-offset);
+}
+
+.accolade-right .acco-desc {
+    right: var(--desc-offset);
+}
+
+
+/* Button */
+
+.acco-btn {
+    position: absolute;
+    bottom: .6rem;
+
+    width: 7rem;
+    height: 1.4rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: .75rem;
+    line-height: 1;
+}
+
+.accolade-left .acco-btn {
+    right: var(--btn-offset);
+}
+
+.accolade-right .acco-btn {
+    left: var(--btn-offset);
+}
+
+
+/* Pin */
+
+.acco-pin {
+    position: absolute;
+    bottom: 2rem;
+
+    width: 2.5rem;
+    height: auto;
+
+    content: url("/static/famfamgold.svg");
+
+    transform: rotate(var(--pin-rotation));
+
+    z-index: 3;
+}
+
+.accolade-left .acco-pin {
+    right: var(--pin-offset);
+}
+
+.accolade-right .acco-pin {
+    left: var(--pin-offset);
+}
+
+
+/* Image */
+
+.acco-image {
+    position: absolute;
+
+    width: 5rem;
+    height: 5rem;
+
+    object-fit: contain;
+    overflow: hidden;
+
+    transform: rotate(var(--image-rotation));
+
+    z-index: 2;
+}
+
+.accolade-left .acco-image {
+    right: var(--image-offset);
+}
+
+.accolade-right .acco-image {
+    left: var(--image-offset);
+}

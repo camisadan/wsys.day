@@ -1,0 +1,70 @@
+.btn-panic {
+    background-color: var(--dot-bg);
+}
+
+.font-msw98 {
+    font-family: "MSW98UI", sans-serif;
+}
+
+.font-patd {
+    font-family: "Panic!", sans-serif;
+}
+
+.font-dotmatrix {
+    font-family: "Dotmatrix", sans-serif;
+}
+
+.font-ornate {
+    font-family: "Ornate", sans-serif;
+}
+
+.font-egyptienne {
+    font-family: "Egyptienne", sans-serif;
+}
+
+@font-face {
+    font-family: "MSW98UI";
+    src: url("/static/fonts/MSW98UI-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "MSW98UI";
+    src: url("/static/fonts/MSW98UI-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Panic!";
+    src:
+        url("/static/fonts/ExtraOrnamentalNo2.woff2") format("woff2"),
+        url("/static/fonts/ExtraOrnamentalNo2.woff") format("woff");
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Dotmatrix";
+    src:
+        url("/static/fonts/DotMatrixQuad-Regular.woff2") format("woff2"),
+        url("/static/fonts/DotMatrixQuad-Regular.woff") format("woff");
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Ornate";
+    src:
+        url("/static/fonts/Goudy\ Ornate\ MT\ Std.woff2") format("woff2"),
+        url("/static/fonts/Goudy\ Ornate\ MT\ Std.woff") format("woff");
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: "Egyptienne";
+    src:
+        url("/static/fonts/EgyptienneZierinitialien.woff2") format("woff2"),
+        url("/static/fonts/EgyptienneZierinitialien.woff") format("woff");
+    font-style: normal;
+}

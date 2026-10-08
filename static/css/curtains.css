@@ -1,0 +1,179 @@
+
+.curtain-left::before {
+    content: "";
+
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 50vw;
+    height: 100vh;
+
+
+    background:
+        linear-gradient(90deg,
+            #210000 0%,
+            #650000 3%,
+            #a90000 6%,
+            #4b0000 9%,
+            #1f0000 12%,
+            #790000 16%,
+            #b80000 19%,
+            #500000 22%,
+            #260000 25%,
+            #850000 29%,
+            #bd0000 32%,
+            #560000 35%,
+            #210000 38%,
+            #700000 42%,
+            #ad0000 45%,
+            #4a0000 48%,
+            #200000 51%,
+            #760000 55%,
+            #b30000 58%,
+            #4b0000 61%,
+            #230000 64%,
+            #7d0000 68%,
+            #b00000 71%,
+            #4c0000 74%,
+            #210000 77%,
+            #700000 81%,
+            #a80000 84%,
+            #470000 87%,
+            #200000 90%,
+            #680000 94%,
+            #a00000 97%,
+            #3a0000 100%);
+    z-index: 9999;
+
+    animation: curtain-left-open 2s ease-in-out forwards;
+}
+
+.curtain-right::before {
+    content: "";
+
+    position: fixed;
+    left: 50vw;
+    top: 0;
+    width: 50vw;
+    height: 100vh;
+
+    background:
+        linear-gradient(-90deg,
+            #210000 0%,
+            #650000 3%,
+            #a90000 6%,
+            #4b0000 9%,
+            #1f0000 12%,
+            #790000 16%,
+            #b80000 19%,
+            #500000 22%,
+            #260000 25%,
+            #850000 29%,
+            #bd0000 32%,
+            #560000 35%,
+            #210000 38%,
+            #700000 42%,
+            #ad0000 45%,
+            #4a0000 48%,
+            #200000 51%,
+            #760000 55%,
+            #b30000 58%,
+            #4b0000 61%,
+            #230000 64%,
+            #7d0000 68%,
+            #b00000 71%,
+            #4c0000 74%,
+            #210000 77%,
+            #700000 81%,
+            #a80000 84%,
+            #470000 87%,
+            #200000 90%,
+            #680000 94%,
+            #a00000 97%,
+            #3a0000 100%);
+
+    z-index: 9999;
+
+    animation: curtain-right-open 2s ease-in-out forwards;
+}
+
+@keyframes curtain-left-open {
+    from {
+        transform: translateX(0);
+        clip-path: polygon(0 0,
+                100% 0,
+                100% 100%,
+                0 100%);
+    }
+
+    to {
+        transform: translateX(-100%);
+        clip-path: polygon(0 0,
+                100% 0,
+                82% 100%,
+                0 100%);
+    }
+}
+
+@keyframes curtain-right-open {
+    from {
+        transform: translateX(0);
+        clip-path: polygon(0 0,
+                100% 0,
+                100% 100%,
+                0 100%);
+    }
+
+    to {
+        transform: translateX(100%);
+        clip-path: polygon(0 0,
+                100% 0,
+                100% 100%,
+                18% 100%);
+    }
+}
+
+@keyframes curtain-left-close {
+    from {
+        transform: translateX(-100%);
+        clip-path: polygon(0 0,
+                100% 0,
+                82% 100%,
+                0 100%);
+    }
+
+    to {
+        transform: translateX(0);
+        clip-path: polygon(0 0,
+                100% 0,
+                100% 100%,
+                0 100%);
+    }
+}
+
+@keyframes curtain-right-close {
+    from {
+        transform: translateX(100%);
+        clip-path: polygon(0 0,
+                100% 0,
+                100% 100%,
+                0 100%);
+    }
+
+    to {
+        transform: translateX(0);
+        clip-path: polygon(0 0,
+                100% 0,
+                100% 100%,
+                0 100%);
+    }
+}
+
+
+.curtain-left.close::before {
+    animation: curtain-left-close 1s ease-in-out forwards;
+}
+
+.curtain-right.close::before {
+    animation: curtain-right-close 1s ease-in-out forwards;
+}

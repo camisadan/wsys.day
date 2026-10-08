@@ -1,0 +1,3 @@
+.btn {
+    color: color-mix(in srgb, var(--text-colour), white 50%) !important;
+}
