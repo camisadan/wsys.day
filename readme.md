@@ -12,4 +12,4 @@ This Repository serves as version control and a push system for my personal webs
 - Normalise image formats / do this in build process
 - Add Build Workflow
 
-- Actually deploy site??!?
+~~- Actually deploy site??!?~~ Donearoonie.
