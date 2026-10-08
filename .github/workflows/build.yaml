@@ -1,0 +1,143 @@
+name: Build and publish beta
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install optimisation tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            optipng \
+            jpegoptim \
+            gifsicle
+
+          npm install --global \
+            html-minifier-terser \
+            clean-css-cli \
+            terser
+
+      - name: Prepare build directory
+        run: |
+          rm -rf dist
+          mkdir -p dist
+
+          rsync -a \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='node_modules/' \
+            --exclude='dist/' \
+            --exclude='*.log' \
+            ./ dist/
+
+      - name: Minify HTML
+        run: |
+          find dist -type f -iname '*.html' -print0 |
+            while IFS= read -r -d '' file; do
+              html-minifier-terser \
+                --collapse-whitespace \
+                --conservative-collapse \
+                --remove-comments \
+                --remove-redundant-attributes \
+                --remove-script-type-attributes \
+                --remove-tag-whitespace \
+                --use-short-doctype \
+                --minify-css true \
+                --minify-js true \
+                "$file" \
+                -o "$file"
+            done
+
+      - name: Minify CSS
+        run: |
+          find dist -type f \( -iname '*.css' -o -iname '*.css' \) -print0 |
+            while IFS= read -r -d '' file; do
+              clean-css -o "$file" "$file"
+            done
+
+      - name: Minify JavaScript
+        run: |
+          find dist -type f \
+            \( -iname '*.js' -o -iname '*.mjs' \) \
+            ! -iname '*.min.js' \
+            -print0 |
+            while IFS= read -r -d '' file; do
+              terser "$file" \
+                --compress \
+                --mangle \
+                --comments false \
+                -o "$file"
+            done
+
+      - name: Losslessly optimise PNG images
+        run: |
+          find dist -type f \( -iname '*.png' \) -print0 |
+            while IFS= read -r -d '' file; do
+              optipng -o7 -quiet "$file"
+            done
+
+      - name: Losslessly optimise JPEG images
+        run: |
+          find dist -type f \
+            \( -iname '*.jpg' -o -iname '*.jpeg' \) \
+            -print0 |
+            while IFS= read -r -d '' file; do
+              jpegoptim \
+                --strip-all \
+                --all-progressive \
+                --max=100 \
+                --quiet \
+                "$file"
+            done
+
+      - name: Losslessly optimise GIF images
+        run: |
+          find dist -type f -iname '*.gif' -print0 |
+            while IFS= read -r -d '' file; do
+              gifsicle \
+                --batch \
+                --optimize=3 \
+                "$file"
+            done
+
+      - name: Create release archive
+        run: |
+          cd dist
+          zip -r -9 ../site-beta.zip .
+          cd ..
+
+      - name: Generate beta version
+        id: version
+        run: |
+          VERSION="0.0.0-beta.${GITHUB_RUN_NUMBER}"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "tag=v${VERSION}" >> "$GITHUB_OUTPUT"
+
+      - name: Publish GitHub beta release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create \
+            "${{ steps.version.outputs.tag }}" \
+            site-beta.zip \
+            --prerelease \
+            --title "Beta ${{ steps.version.outputs.version }}" \
+            --generate-notes
