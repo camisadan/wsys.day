@@ -2,76 +2,75 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Joe Jagger's Website</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Joe Jagger's Website</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <link href="/static/styles.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <link href="/static/styles.css" rel="stylesheet">
 
 </head>
 
 <body>
-    <style>
-        #TTY {
-            overflow-y: auto;
-            color:white;
-            background-color: black !important;
-            font-family:'Courier New', Courier, monospace;
-            font-variant-numeric: tabular-nums lining-nums;
-            max-height: 300px;
-            min-height: 100vh;
-            white-space: pre-wrap;
-        }
-        body {
-            background-color: black !important;
-            background-image: none;
-        }
+  <style>
+    #TTY {
+      overflow-y: auto;
+      color: white;
+      background-color: black !important;
+      font-family: 'Courier New', Courier, monospace;
+      font-variant-numeric: tabular-nums lining-nums;
+      max-height: 300px;
+      min-height: 100vh;
+      white-space: pre-wrap;
+    }
 
-        /* Visible CRT overlay */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9999;
+    body {
+      background-color: black !important;
+      background-image: none;
+    }
 
-  background:
-    repeating-linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.00) 0px,
-      rgba(255, 255, 255, 0.00) 2px,
-      rgba(0, 255, 80, 0.18) 3px,
-      rgba(0, 255, 80, 0.18) 4px
-    );
+    /* Visible CRT overlay */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
 
-  box-shadow:
-    inset 0 0 120px rgba(0, 0, 0, 0.9),
-    inset 0 0 40px rgba(0, 255, 80, 0.25);
+      background:
+        repeating-linear-gradient(0deg,
+          rgba(255, 255, 255, 0.00) 0px,
+          rgba(255, 255, 255, 0.00) 2px,
+          rgba(255, 123, 0, 0.18) 3px,
+          rgba(255, 132, 0, 0.18) 4px);
 
-  opacity: 1;
-}
+      box-shadow:
+        inset 0 0 120px rgba(0, 0, 0, 0.9),
+        inset 0 0 40px rgba(255, 166, 0, 0.25);
 
-/* Make the actual content glow */
-body {
-  color: #baffba;
-  text-shadow:
-    0 0 3px #00ff55,
-    0 0 8px rgba(0, 255, 80, 0.7);
-}
-    </style>
+      opacity: 1;
+    }
 
-    <div class="container-fluid p-0">
+    /* Make the actual content glow */
+    body {
+      color: #ffd3ba;
+      text-shadow:
+        0 0 3px #ff7700,
+        0 0 8px rgba(255, 106, 0, 0.7);
+    }
+  </style>
 
-        <div class="bg-black m-0 p-2" contenteditable="false" id="TTY">
+  <div class="container-fluid p-0">
 
+    <div class="bg-black m-0 p-2" contenteditable="false" id="TTY">
 
 
 
-        </div>
 
     </div>
-    <script src="/static/netcmd.js"></script>
+
+  </div>
+  <script src="/static/netcmd.js"></script>
 
 </html>
