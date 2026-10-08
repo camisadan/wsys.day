@@ -27,6 +27,6 @@
         "desc": "Simple WebApp.",
         "id": "skellygen",
                 "imagehref" :"/static/projects/html.jpg",
-        "innerHTML":"<h1>HTML Skeleton Generator</h1><p>Not a particularly advanced nor recent project, but still worth putting here. A simple web interface to create HTML skeleton with specified variables. My first JS app, actually.</p>"
+        "innerHTML":"<h1>HTML Skeleton Generator</h1><p>Not a particularly advanced nor recent project, but still worth putting here. A simple web interface to create HTML skeleton with specified variables. My first JS app, actually.</p><br><a class='btn btn-danger' href='https://github.com/camisadan/html-skeleton-generator' target=_blank>View Project on GitHub <i class='bi bi-github'></i></a>"
     }
 ]

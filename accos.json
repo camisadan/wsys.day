@@ -6,7 +6,7 @@
         "imagehref" :"https://picsum.photos/seed/disklarity/400/720",
         "is_bigboy":false,
         "innerHTML":"<p>erm</p>",
-        "debug":false
+        "debug":true
     },
     {
         "title":"Work Experience",
@@ -15,6 +15,15 @@
         "imagehref":"/static/accolades/strat7.jpg",
         "is_bigboy":true,
         "innerHTML":"<h1>Work Experience</h1><h3>@ Strat7 ResearchBods</h3><p>During the August of 2026, I completed a week of Work Experience in the I.T Department of Strat7 ResearchBods.<p>During this time, I gained experience in Enterprise systems such as AvePoint Backup, HALO Ticketing, Basic Entra Operations, and recieved GDPR training during onboarding. I decommissioned broken and old laptops and catalogued storage devices for destruction. It was honestly, very very fun. The coffee machine was brilliant too.",
+        "debug":false
+    },
+    {
+        "title":"CyberSwitchup",
+        "desc":"Regional Contest @ Sheffield Hallam",
+        "id":"worst-contest-ever",
+        "imagehref":"/static/accolades/hallam.jpg",
+        "innerHTML":"<h1>CyberSwitchUp</h1><p>In 2024, I attended the CyberSwitchUp competition, after being 'asked' (forced) to sign up by the Yorkshire & Humber Regional Organised Crime unit for the heinous crime of opening the UEFI on a school computer.<p>I placed 4th out of ~40 contestants, failing due to the incompetent environment, incorrectly set up systems and broken tasks, but still, 4th place is an achievement.<p>Tasks Completed:<ul><li>O.S.I.N.T (Open Source Intelligence)<li>TCP Packet Decoding<li>Basic JavaScript Exploiting<li>Ate a Chicken Tikka wrap</ul><p>Also, I had my Flipper Zero running the entire time broadcasting my website under the portal page of a network with the SSID of my GitHub username. Which was quite funny.",
+        "is_bigboy":true,
         "debug":false
     }
 ]

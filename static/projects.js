@@ -57,12 +57,14 @@ LoadProjects().then(projects => {
     }
 });
 
-document.querySelectorAll(".project-pane").forEach(pane => {
-    pane.addEventListener("mouseenter", () => {
-        const rotation = Math.random() < 0.5 ? -1 : 1;
-        pane.style.setProperty("--rotation", `${rotation}deg`);
-    });
-});
+document.addEventListener("mouseenter", (event) => {
+    const pane = event.target.closest(".project-pane");
+
+    if (!pane) return;
+
+    const rotation = Math.random() < 0.5 ? -1 : 1;
+    pane.style.setProperty("--rotation", `${rotation}deg`);
+}, true);
 
 function ShowPlaybill(projectname) {
 
