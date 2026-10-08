@@ -28,7 +28,9 @@ jobs:
           sudo apt-get install -y \
             optipng \
             jpegoptim \
-            gifsicle
+            gifsicle \
+            rsync \
+            zip
 
           npm install --global \
             html-minifier-terser \
@@ -49,74 +51,113 @@ jobs:
             ./ dist/
 
       - name: Minify HTML
+        shell: bash
         run: |
-          find dist -type f -iname '*.html' -print0 |
-            while IFS= read -r -d '' file; do
-              html-minifier-terser \
-                --collapse-whitespace \
-                --conservative-collapse \
-                --remove-comments \
-                --remove-redundant-attributes \
-                --remove-script-type-attributes \
-                --remove-tag-whitespace \
-                --use-short-doctype \
-                --minify-css true \
-                --minify-js true \
-                "$file" \
-                -o "$file"
-            done
+          set -euo pipefail
+
+          found=0
+
+          while IFS= read -r -d '' file; do
+            found=1
+            echo "Minifying HTML: $file"
+
+            tmp="${file}.min"
+
+            if ! html-minifier-terser \
+              --collapse-whitespace \
+              --conservative-collapse \
+              --remove-comments \
+              --remove-redundant-attributes \
+              --remove-script-type-attributes \
+              --remove-tag-whitespace \
+              --use-short-doctype \
+              --minify-css \
+              --minify-js \
+              "$file" \
+              -o "$tmp"; then
+
+              echo "::error file=$file::HTML minification failed"
+              rm -f "$tmp"
+              exit 1
+            fi
+
+            mv "$tmp" "$file"
+          done < <(find dist -type f -iname '*.html' -print0)
+
+          if [ "$found" -eq 0 ]; then
+            echo "No HTML files found; skipping."
+          fi
 
       - name: Minify CSS
+        shell: bash
         run: |
-          find dist -type f \( -iname '*.css' -o -iname '*.css' \) -print0 |
-            while IFS= read -r -d '' file; do
-              clean-css -o "$file" "$file"
-            done
+          set -euo pipefail
+
+          while IFS= read -r -d '' file; do
+            echo "Minifying CSS: $file"
+            clean-css -o "$file" "$file"
+          done < <(find dist -type f -iname '*.css' -print0)
 
       - name: Minify JavaScript
+        shell: bash
         run: |
-          find dist -type f \
-            \( -iname '*.js' -o -iname '*.mjs' \) \
-            ! -iname '*.min.js' \
-            -print0 |
-            while IFS= read -r -d '' file; do
-              terser "$file" \
-                --compress \
-                --mangle \
-                --comments false \
-                -o "$file"
-            done
+          set -euo pipefail
+
+          while IFS= read -r -d '' file; do
+            echo "Minifying JavaScript: $file"
+            terser "$file" \
+              --compress \
+              --mangle \
+              --comments false \
+              -o "$file"
+          done < <(
+            find dist -type f \
+              \( -iname '*.js' -o -iname '*.mjs' \) \
+              ! -iname '*.min.js' \
+              -print0
+          )
 
       - name: Losslessly optimise PNG images
+        shell: bash
         run: |
-          find dist -type f \( -iname '*.png' \) -print0 |
-            while IFS= read -r -d '' file; do
-              optipng -o7 -quiet "$file"
-            done
+          set -euo pipefail
+
+          while IFS= read -r -d '' file; do
+            echo "Optimising PNG: $file"
+            optipng -o7 -quiet "$file"
+          done < <(find dist -type f -iname '*.png' -print0)
 
       - name: Losslessly optimise JPEG images
+        shell: bash
         run: |
-          find dist -type f \
-            \( -iname '*.jpg' -o -iname '*.jpeg' \) \
-            -print0 |
-            while IFS= read -r -d '' file; do
-              jpegoptim \
-                --strip-all \
-                --all-progressive \
-                --max=100 \
-                --quiet \
-                "$file"
-            done
+          set -euo pipefail
+
+          while IFS= read -r -d '' file; do
+            echo "Optimising JPEG: $file"
+            jpegoptim \
+              --strip-all \
+              --all-progressive \
+              --max=100 \
+              --quiet \
+              "$file"
+          done < <(
+            find dist -type f \
+              \( -iname '*.jpg' -o -iname '*.jpeg' \) \
+              -print0
+          )
 
       - name: Losslessly optimise GIF images
+        shell: bash
         run: |
-          find dist -type f -iname '*.gif' -print0 |
-            while IFS= read -r -d '' file; do
-              gifsicle \
-                --batch \
-                --optimize=3 \
-                "$file"
-            done
+          set -euo pipefail
+
+          while IFS= read -r -d '' file; do
+            echo "Optimising GIF: $file"
+            gifsicle \
+              --batch \
+              --optimize=3 \
+              "$file"
+          done < <(find dist -type f -iname '*.gif' -print0)
 
       - name: Create release archive
         run: |
