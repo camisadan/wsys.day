@@ -2,7 +2,7 @@
     background-color: rgb(36, 36, 36) !important;
     height: 20rem;
     overflow: hidden;
-    animation: paneload 2s ease-in;
+    animation: paneload .5s ease-in;
     transition:
         transform .5s ease-in-out,
         box-shadow .5s ease-in-out;

@@ -1,6 +1,3 @@
-
-
-
 .abs {
     position: absolute;
 }
@@ -17,25 +14,60 @@
 
 
 .panel {
-    border: 2px solid #d6d6d6 !important;
+    border: 0.125rem solid #d6d6d6 !important;
     background-image: linear-gradient(#5c0e27, #450b1d);
     backdrop-filter: blur(10px);
 }
+
 .header {
     max-height: 9rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
+
 .sidebar {
-    min-height: 440px;
+    min-height: 27.5rem;
 }
+
 .nav-box {
-    height: 60px;
+    position: relative;
+    height: 3.75rem;
     border-bottom: 2px solid #d6d6d6;
 }
+
+.nav-box:hover {
+    animation: colourchange 0.1s ease-in-out both;
+}
+
+.nav-box::before {
+    content: "☞";
+    position: absolute;
+    color: var(--text-colour);
+    right: 100%;
+    top: 50%;
+    font-size: 4rem;
+    transform: translate(10px, -50%);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.nav-box:hover::before {
+    transform: translate(-2rem, -50%);
+    opacity: 1;
+}
+
+@keyframes colourchange {
+    to {
+        color: #FBFAF5;
+        text-shadow: rgba(255, 208, 0, 0.9) 0px 0px 39px;
+    }
+}
+
 .content {
     min-height: 440px;
 }
+
 .placeholder {
     width: 125px;
     height: 125px;

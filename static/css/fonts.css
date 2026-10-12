@@ -10,10 +10,6 @@
     font-family: "Panic!", sans-serif;
 }
 
-.font-dotmatrix {
-    font-family: "Dotmatrix", sans-serif;
-}
-
 .font-ornate {
     font-family: "Ornate", sans-serif;
 }
@@ -46,14 +42,6 @@
     src:
         url("/static/fonts/ExtraOrnamentalNo2.woff2") format("woff2"),
         url("/static/fonts/ExtraOrnamentalNo2.woff") format("woff");
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "Dotmatrix";
-    src:
-        url("/static/fonts/DotMatrixQuad-Regular.woff2") format("woff2"),
-        url("/static/fonts/DotMatrixQuad-Regular.woff") format("woff");
     font-style: normal;
 }
 
