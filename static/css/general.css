@@ -1,0 +1,45 @@
+.denver-header {
+    color: #F7C7C3;
+    text-shadow:
+        0 0 10px #F7C7C3,
+        2px 3px 2px #000,
+        4px 5px 3px #000,
+        6px 7px 5px rgba(0, 0, 0, 0.75),
+        8px 10px 8px rgba(0, 0, 0, 0.691),
+        4px 4px 22px rgba(0,0,0,1);
+    text-align: center !important;
+    animation: dropIn 2s ease-out forwards;
+    overflow: visible;
+}
+
+.denver-header.huge {
+    font-size: 5.5rem !important;
+    margin-top: 3rem;
+    width: 100%;
+    text-wrap: initial;
+}
+
+.denver-header.subtext {
+    font-size: 2rem !important;
+    margin-top: -1rem;
+}
+@keyframes dropIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.jagger-svg {
+    height: auto;
+    overflow: visible;
+}
+
+.font-curlz {
+    font-family: "Curlz MT", cursive;
+}
