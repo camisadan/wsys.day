@@ -40,7 +40,7 @@
 }
 
 .nav-box::before {
-    content: "☞";
+    /* to be re-added: hand. */
     position: absolute;
     color: var(--text-colour);
     right: 100%;

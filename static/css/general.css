@@ -7,13 +7,16 @@
         8px 10px 8px rgba(0, 0, 0, 0.691),
         4px 4px 22px rgba(0, 0, 0, 1);
     text-align: center !important;
-    animation: dropIn 2s ease-out forwards;
     overflow: visible;
 }
 
+.fall-in{
+        animation: dropIn 2s ease-out forwards;
+
+}
+
 .denver-header.huge {
-    font-size: 7.3rem !important;
-    margin-top: 3rem;
+    font-size: 7rem !important;
     text-wrap: nowrap;
 
 }
