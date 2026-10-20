@@ -4,27 +4,7 @@ body {
     margin: 0;
 }
 
-body {
-    min-height: 100vh;
-    overflow-x: hidden;
-    margin: 0;
-
-    background:
-        radial-gradient(circle,
-            var(--dot-bg) var(--dot-size),
-            transparent calc(var(--dot-size) + 1px)) center / var(--dot-space) var(--dot-space),
-        var(--dot-colour);
-
-
-    color: var(--text-colour);
-
-    font-family: "MSW98UI", sans-serif;
-
-}
-
-
 html {
-    /*VARS*/
     --dot-bg: #b14c4c;
     --dot-colour: #760029;
     --dot-size: 1px;
@@ -33,7 +13,40 @@ html {
 
     --text-colour: #ffc437;
 
+    /* Overlay gradient */
+    --overlay-colour: 0, 0, 0;
+    --overlay-opacity: 0.35;
 }
+
+body {
+    position: relative;
+    isolation: isolate;
+
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(circle,
+            var(--dot-bg) var(--dot-size),
+            transparent calc(var(--dot-size) + 1px)) center / var(--dot-space) var(--dot-space),
+        var(--dot-colour);
+
+    color: var(--text-colour);
+    font-family: "MSW98UI", sans-serif;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background: linear-gradient(rgba(255, 0, 0, 0),
+            rgba(12, 0, 0, 0.229));
+
+    pointer-events: none;
+    z-index: -2;
+}
+
 
 h1 {
     text-wrap-style: pretty;

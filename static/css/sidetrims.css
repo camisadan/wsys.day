@@ -1,0 +1,68 @@
+:root {
+    --edge-image: url("/static/sidetrims/sidetrim.png");
+    --edge-left-image: var(--edge-image);
+    --edge-right-image: var(--edge-image);
+
+    --edge-width: 120px;
+    --edge-height: 100vh;
+
+    --edge-loop-duration: 10s;
+    --edge-tile-height: 80vh;
+}
+
+.edge,
+.edge-left,
+.edge-right {
+    position: fixed;
+    top: 0;
+    height: var(--edge-height);
+    overflow: hidden;
+    z-index: -2;
+    pointer-events: none;
+
+    background-repeat: repeat-y;
+    background-position: 0 0;
+    background-size: 100% var(--edge-tile-height);
+
+    animation: edge-scroll-up var(--edge-loop-duration) linear infinite;
+
+    will-change: background-position;
+}
+
+.edge {
+    left: 0;
+    width: 100vw;
+    background-image: var(--edge-image);
+}
+
+.edge-left {
+    left: -2rem;
+    width: var(--edge-width);
+    background-image: var(--edge-left-image);
+}
+
+.edge-right {
+    right: -2rem;
+    width: var(--edge-width);
+    background-image: var(--edge-right-image);
+    transform: scaleX(-1) rotateX(180deg);
+}
+
+@keyframes edge-scroll-up {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 0 calc(-1 * var(--edge-tile-height));
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .edge,
+    .edge-left,
+    .edge-right {
+        animation: none;
+    }
+}

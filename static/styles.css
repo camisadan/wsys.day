@@ -1,8 +1,17 @@
-@import url("/static/css/fonts.css");/* fonts and font applicant classes*/
-@import url("/static/css/root-styles.css"); /*anything that modifies base elements*/
-@import url("/static/css/bs5-mods.css"); /*Anything designed to target bs5 stuff*/
-@import url("/static/css/projects.css"); /*Project Panes, etc*/
-@import url("/static/css/curtains.css"); /*dedicated curtain file because of their huge gradient*/
-@import url("/static/css/utilities.css"); /*Utility Classes*/
-@import url("/static/css/playbills.css"); /* playbills (white project cards that appear)*/
-@import url("/static/css/accos.css"); /* accolades page */
+@import url("/static/css/fonts.css");
+/* fonts and font applicant classes*/
+@import url("/static/css/root-styles.css");
+/*anything that modifies base elements*/
+@import url("/static/css/bs5-mods.css");
+/*Anything designed to target bs5 stuff*/
+@import url("/static/css/projects.css");
+/*Project Panes, etc*/
+@import url("/static/css/curtains.css");
+/*dedicated curtain file because of their huge gradient*/
+@import url("/static/css/utilities.css");
+/*Utility Classes*/
+@import url("/static/css/playbills.css");
+/* playbills (white project cards that appear)*/
+@import url("/static/css/accos.css");
+/* accolades page */
+@import url("/static/css/sidetrims.css")
