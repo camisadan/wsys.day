@@ -3,7 +3,7 @@
     --edge-left-image: var(--edge-image);
     --edge-right-image: var(--edge-image);
 
-    --edge-width: 120px;
+    --edge-width: 10vh;
     --edge-height: 100vh;
 
     --edge-loop-duration: 10s;

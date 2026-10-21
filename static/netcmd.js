@@ -190,6 +190,7 @@ async function CommandLoop() {
         }
 
         Mime = Resp.headers.get("Content-Type").split(";")[0];
+        await PrintTTY(`Located MimeType: ${Mime}`)
         if (Mime === "application/x-shockwave-flash") {
             await PrintTTY("Attempting to execute Shockwave Flash via Ruffle.\nCTRL+B TO EXIT.");
 
@@ -240,86 +241,88 @@ async function CommandLoop() {
             } catch (e) {
                 await PrintTTY(`JSON parsing failed: ${e.message}`, 1, false);
             }
-
-            
-            
-            
-            
-            
-            if (Mime === "image/png") {
-    await PrintTTY(`Displaying ${args[0]}.`);
-
-    const uniqueId = `tty-img-${crypto.randomUUID()}`;
-
-    document.body.insertAdjacentHTML("beforeend", `
-        <div id="${uniqueId}"
-             class="tty-window bg-dark rounded shadow position-absolute"
-             style="z-index:1050; cursor:move;">
-
-            <button type="button"
-                    class="btn-close btn-close-white position-absolute top-0 end-0 m-2"
-                    aria-label="Close"
-                    onclick="document.getElementById('${uniqueId}')?.remove()">
-            </button>
-
-            <img src="${Resp.URI}"
-                 class="img-fluid rounded"
-                 alt="">
-        </div>
-    `);
-
-    const el = document.getElementById(uniqueId);
-
-    let dragging = false;
-    let offsetX = 0;
-    let offsetY = 0;
-
-    el.addEventListener("pointerdown", event => {
-        if (event.target.closest("button")) return;
-
-        dragging = true;
-        offsetX = event.clientX - el.offsetLeft;
-        offsetY = event.clientY - el.offsetTop;
-
-        el.setPointerCapture(event.pointerId);
-    });
-
-    el.addEventListener("pointermove", event => {
-        if (!dragging) return;
-
-        el.style.left = `${event.clientX - offsetX}px`;
-        el.style.top = `${event.clientY - offsetY}px`;
-    });
-
-    el.addEventListener("pointerup", () => {
-        dragging = false;
-    });
-
-    el.addEventListener("pointercancel", () => {
-        dragging = false;
-    });
-
-    continue;
-}
-            
-            
-            continue;
-        
-
-            
         }
+
+
+
+
+
+
+        if (Mime === "image/png") {
+            await PrintTTY(`Displaying ${args[0]}.`);
+
+            const uniqueId = `tty-img-${crypto.randomUUID()}`;
+
+            document.body.insertAdjacentHTML("beforeend", `
+    <div id="${uniqueId}"
+            class="tty-window bg-dark rounded shadow position-absolute"
+            style="z-index:1050; cursor:move;">
+
+        <button type="button"
+                class="btn-close btn-close-white position-absolute top-0 end-0 m-2"
+                aria-label="Close"
+                onclick="document.getElementById('${uniqueId}')?.remove()">
+        </button>
+
+        <img src="/netcommands/${args[0]}"
+        class="img-fluid"
+        alt = "" >
+    </div >
+            `);
+
+
+            const el = document.getElementById(uniqueId);
+
+            let dragging = false;
+            let offsetX = 0;
+            let offsetY = 0;
+
+            el.addEventListener("pointerdown", event => {
+                if (event.target.closest("button")) return;
+
+                dragging = true;
+                offsetX = event.clientX - el.offsetLeft;
+                offsetY = event.clientY - el.offsetTop;
+
+                el.setPointerCapture(event.pointerId);
+            });
+
+            el.addEventListener("pointermove", event => {
+                if (!dragging) return;
+
+                el.style.left = `${event.clientX - offsetX} px`;
+                el.style.top = `${event.clientY - offsetY} px`;
+            });
+
+            el.addEventListener("pointerup", () => {
+                dragging = false;
+            });
+
+            el.addEventListener("pointercancel", () => {
+                dragging = false;
+            });
+
+            continue;
+        }
+
+
+        continue;
+
+
+
     }
 }
+
 async function RunNetCommandline() {
     TTY.textContent = ""
     await PrintTTY("------------------------------------------------------------------------------", 5);
     await PrintTTY("NeTTY Initialized.")
     await PrintTTY("CTRL + C or 'logoff' or 'poweroff' or 'exit' to return to wsys.day.")
     await sleep(500);
-    await PrintTTY(`Connected to RealmD Server @ `, 10, false)
-    await PrintTTY(`${FakeIP}`, 30)
+    await PrintTTY(`Connected to RealmD Server @`, 10, false)
+    await PrintTTY(`${FakeIP} `, 30)
     await PrintTTY(`We are on VLAN: ${Number5} via enp14s0.\n\n`)
-    await PrintTTY(`Connecting to /var/lib/sss/pipes/private/pam...`)
+    await PrintTTY(`Connecting to /var/lib/sss / pipes / private / pam...`)
 
     await PrintTTY("[.................................] ", 20, false)
 
