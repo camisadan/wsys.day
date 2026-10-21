@@ -16,6 +16,7 @@ html {
     /* Overlay gradient */
     --overlay-colour: 0, 0, 0;
     --overlay-opacity: 0.35;
+
 }
 
 body {
@@ -33,6 +34,7 @@ body {
 
     color: var(--text-colour);
     font-family: "MSW98UI", sans-serif;
+
 }
 
 body::before {

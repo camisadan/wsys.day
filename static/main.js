@@ -76,3 +76,5 @@ async function RandomObjectsFall() {
 }
 
 setInterval(RandomObjectsFall, 2000);
+
+
