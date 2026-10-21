@@ -1,0 +1,62 @@
+.falling-item {
+    position: fixed;
+    top: -10vh;
+    z-index: -3;
+    animation: fall 13s;
+}
+
+.playingcard {
+    width: 4rem !important;
+}
+
+.rot-left {
+    transform: rotate(-90deg);
+    animation: rotleft 6s linear, fadein 1.5s ease-out;
+}
+
+.rot-right {
+    transform: rotate(90deg);
+    animation: rotright 6s linear, fadein 1.5s ease-out;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+        scale: 1.1;
+    }
+
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+@keyframes rotleft {
+    from {
+        rotate: -90deg;
+    }
+
+    to {
+        rotate: 60deg;
+    }
+}
+
+@keyframes rotright {
+    from {
+        rotate: 90deg;
+    }
+
+    to {
+        rotate: -60deg;
+    }
+}
+
+@keyframes fall {
+    from {
+        top: -10vh;
+    }
+
+    to {
+        top: 110vh;
+    }
+}

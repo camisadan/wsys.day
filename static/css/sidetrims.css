@@ -8,6 +8,8 @@
 
     --edge-loop-duration: 10s;
     --edge-tile-height: 80vh;
+
+    --edge-slide-duration: 1.5s;
 }
 
 .edge,
@@ -39,6 +41,10 @@
     left: -2rem;
     width: var(--edge-width);
     background-image: var(--edge-left-image);
+
+    animation:
+        edge-scroll-up var(--edge-loop-duration) linear infinite,
+        edge-slide-in-left var(--edge-slide-duration) ease-out 0s both;
 }
 
 .edge-right {
@@ -46,6 +52,10 @@
     width: var(--edge-width);
     background-image: var(--edge-right-image);
     transform: scaleX(-1) rotateX(180deg);
+
+    animation:
+        edge-scroll-up var(--edge-loop-duration) linear infinite,
+        edge-slide-in-right var(--edge-slide-duration) ease-out 0s both;
 }
 
 @keyframes edge-scroll-up {
@@ -55,6 +65,26 @@
 
     to {
         background-position: 0 calc(-1 * var(--edge-tile-height));
+    }
+}
+
+@keyframes edge-slide-in-left {
+    from {
+        translate: -100vw 0;
+    }
+
+    to {
+        translate: 0 0;
+    }
+}
+
+@keyframes edge-slide-in-right {
+    from {
+        translate: 100vw 0;
+    }
+
+    to {
+        translate: 0 0;
     }
 }
 

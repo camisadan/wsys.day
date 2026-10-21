@@ -14,4 +14,5 @@
 /* playbills (white project cards that appear)*/
 @import url("/static/css/accos.css");
 /* accolades page */
-@import url("/static/css/sidetrims.css")
+@import url("/static/css/sidetrims.css");
+@import url("/static/css/falling-items.css")
