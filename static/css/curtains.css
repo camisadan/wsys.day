@@ -9,39 +9,28 @@
 
 
     background:
-        linear-gradient(90deg,
-            #210000 0%,
-            #650000 3%,
-            #a90000 6%,
-            #4b0000 9%,
-            #1f0000 12%,
-            #790000 16%,
-            #b80000 19%,
-            #500000 22%,
-            #260000 25%,
-            #850000 29%,
-            #bd0000 32%,
-            #560000 35%,
-            #210000 38%,
-            #700000 42%,
-            #ad0000 45%,
-            #4a0000 48%,
-            #200000 51%,
-            #760000 55%,
-            #b30000 58%,
-            #4b0000 61%,
-            #230000 64%,
-            #7d0000 68%,
-            #b00000 71%,
-            #4c0000 74%,
-            #210000 77%,
-            #700000 81%,
-            #a80000 84%,
-            #470000 87%,
-            #200000 90%,
-            #680000 94%,
-            #a00000 97%,
-            #3a0000 100%);
+        radial-gradient(ellipse at 50% 30%,
+            #ff3434aa 0%,
+            transparent 40%),
+        repeating-linear-gradient(90deg,
+            #180008 0%,
+            #39000b 3%,
+            #8b001b 6%,
+            #e00032 8%,
+            #790018 10%,
+            #250008 14%,
+            #100004 16%,
+            #650014 20%,
+            #d60030 23%,
+            #570011 26%,
+            #160006 30%);
+
+    background-size: 100% 100%, 180px 100%;
+    box-shadow:
+        inset 0 0 35px #000,
+        inset 0 0 100px #160000,
+        0 0 35px #000;
+
     z-index: 9999;
 
     animation: curtain-left-open 2s ease-in-out forwards;
@@ -55,41 +44,29 @@
     top: 0;
     width: 50vw;
     height: 100vh;
-
     background:
-        linear-gradient(-90deg,
-            #210000 0%,
-            #650000 3%,
-            #a90000 6%,
-            #4b0000 9%,
-            #1f0000 12%,
-            #790000 16%,
-            #b80000 19%,
-            #500000 22%,
-            #260000 25%,
-            #850000 29%,
-            #bd0000 32%,
-            #560000 35%,
-            #210000 38%,
-            #700000 42%,
-            #ad0000 45%,
-            #4a0000 48%,
-            #200000 51%,
-            #760000 55%,
-            #b30000 58%,
-            #4b0000 61%,
-            #230000 64%,
-            #7d0000 68%,
-            #b00000 71%,
-            #4c0000 74%,
-            #210000 77%,
-            #700000 81%,
-            #a80000 84%,
-            #470000 87%,
-            #200000 90%,
-            #680000 94%,
-            #a00000 97%,
-            #3a0000 100%);
+        radial-gradient(ellipse at 50% 30%,
+            #ff3434aa 0%,
+            transparent 40%),
+        repeating-linear-gradient(90deg,
+            #180008 0%,
+            #39000b 3%,
+            #8b001b 6%,
+            #e00032 8%,
+            #790018 10%,
+            #250008 14%,
+            #100004 16%,
+            #650014 20%,
+            #d60030 23%,
+            #570011 26%,
+            #160006 30%);
+
+    background-size: 100% 100%, 180px 100%;
+    box-shadow:
+        inset 0 0 35px #000,
+        inset 0 0 100px #160000,
+        0 0 35px #000;
+
 
     z-index: 9999;
 
@@ -98,77 +75,43 @@
 
 @keyframes curtain-left-open {
     from {
-        transform: translateX(0);
-        clip-path: polygon(0 0,
-                100% 0,
-                100% 100%,
-                0 100%);
-
+        transform: translateX(0) skewX(0deg);
     }
 
     to {
-        transform: translateX(-100%);
-        clip-path: polygon(0 0,
-                100% 0,
-                82% 100%,
-                0 100%);
+        transform: translateX(-100%) skewX(-8deg);
     }
 }
 
 @keyframes curtain-right-open {
     from {
-        transform: translateX(0);
-        clip-path: polygon(0 0,
-                100% 0,
-                100% 100%,
-                0 100%);
+        transform: translateX(0) skewX(0deg);
     }
 
     to {
-        transform: translateX(100%);
-        clip-path: polygon(0 0,
-                100% 0,
-                100% 100%,
-                18% 100%);
+        transform: translateX(100%) skewX(8deg);
     }
 }
 
 @keyframes curtain-left-close {
     from {
-        transform: translateX(-100%);
-        clip-path: polygon(0 0,
-                100% 0,
-                82% 100%,
-                0 100%);
+        transform: translateX(-100%) skewX(-8deg);
     }
 
     to {
-        transform: translateX(0);
-        clip-path: polygon(0 0,
-                100% 0,
-                100% 100%,
-                0 100%);
+        transform: translateX(0) skewX(0deg);
     }
 }
 
 @keyframes curtain-right-close {
     from {
-        transform: translateX(100%);
-        clip-path: polygon(0 0,
-                100% 0,
-                100% 100%,
-                0 100%);
+        transform: translateX(100%) skewX(8deg);
     }
 
     to {
-        transform: translateX(0);
-        clip-path: polygon(0 0,
-                100% 0,
-                100% 100%,
-                0 100%);
+        transform: translateX(0) skewX(0deg);
     }
 }
-
 
 .curtain-left.close::before {
     animation: curtain-left-close 1s ease-in-out forwards;
