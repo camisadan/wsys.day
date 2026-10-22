@@ -79,7 +79,7 @@
     }
 
     to {
-        transform: translateX(-100%) skewX(-8deg);
+        transform: translateX(-120%) skewX(-8deg);
     }
 }
 
@@ -89,13 +89,13 @@
     }
 
     to {
-        transform: translateX(100%) skewX(8deg);
+        transform: translateX(120%) skewX(8deg);
     }
 }
 
 @keyframes curtain-left-close {
     from {
-        transform: translateX(-100%) skewX(-8deg);
+        transform: translateX(-120%) skewX(-8deg);
     }
 
     to {
@@ -105,7 +105,7 @@
 
 @keyframes curtain-right-close {
     from {
-        transform: translateX(100%) skewX(8deg);
+        transform: translateX(120%) skewX(8deg);
     }
 
     to {
