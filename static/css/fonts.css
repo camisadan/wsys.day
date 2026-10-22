@@ -22,6 +22,11 @@
     font-family: "Egyptienne", sans-serif;
 }
 
+.invert {
+    filter: invert(1);
+}
+
+
 @font-face {
     font-family: "MSW98UI";
     src: url("/static/fonts/MSW98UI-Regular.woff2") format("woff2");
@@ -39,8 +44,8 @@
 @font-face {
     font-family: "Panic!";
     src:
-        url("/static/fonts/ExtraOrnamentalNo2.woff2") format("woff2"),
-        url("/static/fonts/ExtraOrnamentalNo2.woff") format("woff");
+        url("/static/fonts/ExtraOrnamentalNo2.woff2") format("woff2");
+    descent-override: 0%;
     font-style: normal;
 }
 
