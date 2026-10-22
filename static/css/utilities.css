@@ -2,6 +2,39 @@
     position: absolute;
 }
 
+.header {
+    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 1;
+}
+
+.header-title {
+    font-size: clamp(5rem, 10vw, 9rem);
+    line-height: 1;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+    white-space: nowrap;
+    text-align: center;
+}
+
+@media (max-width: 480px) {
+    .header-title {
+        font-size: clamp(2rem, 10vw, 3rem);
+    }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+    .header-title {
+        font-size: clamp(4rem, 8vw, 4.5rem);
+    }
+}
+@media (min-width: 769px) {
+    .header-title {
+        font-size: clamp(6rem, 7vw, 6.5rem);
+    }
+}
+
 .fill-text {
     display: block;
     font-size: clamp(1rem, 5vw, 4rem);

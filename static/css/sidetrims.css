@@ -38,7 +38,7 @@
 }
 
 .edge-left {
-    left: -2rem;
+    left: -.4rem;
     width: var(--edge-width);
     background-image: var(--edge-left-image);
 
@@ -48,7 +48,7 @@
 }
 
 .edge-right {
-    right: -2rem;
+    right: -.4rem;
     width: var(--edge-width);
     background-image: var(--edge-right-image);
     transform: scaleX(-1) rotateX(180deg);
