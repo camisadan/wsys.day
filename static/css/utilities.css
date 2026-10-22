@@ -19,16 +19,22 @@
     text-align: center;
 }
 
+.invert {
+    filter: invert(1);
+}
+
 @media (max-width: 480px) {
     .header-title {
         font-size: clamp(2rem, 10vw, 3rem);
     }
 }
+
 @media (min-width: 481px) and (max-width: 768px) {
     .header-title {
         font-size: clamp(4rem, 8vw, 4.5rem);
     }
 }
+
 @media (min-width: 769px) {
     .header-title {
         font-size: clamp(6rem, 7vw, 6.5rem);

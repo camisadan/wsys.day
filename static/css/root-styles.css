@@ -2,9 +2,6 @@ html,
 body {
     min-height: 100%;
     margin: 0;
-}
-
-html {
     --dot-bg: #b14c4c;
     --dot-colour: #760029;
     --dot-size: 1px;
@@ -17,6 +14,33 @@ html {
     --overlay-colour: 0, 0, 0;
     --overlay-opacity: 0.35;
 
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+a,
+svg,
+img,
+li,
+ul,
+.btn {
+    animation: 1.2s fadeInWord;
+}
+
+@keyframes fadeInWord {
+    0% {
+        opacity: 0;
+        filter: blur(10px);
+    }
+
+    100% {
+        opacity: 1;
+        filter: blur(0);
+    }
 }
 
 body {

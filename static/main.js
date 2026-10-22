@@ -38,10 +38,16 @@ document.addEventListener("click", async (event) => {
 });
 
 const htmlTable = [
-    "<img src='/static/cards/card1.png' class='playingcard rot-left'>",
-    "<img src='/static/cards/card2.png' class='playingcard rot-left'>",
-    "<img src='/static/cards/card1.png' class='playingcard rot-right'>",
-    "<img src='/static/cards/card2.png' class='playingcard rot-right'>",
+    "<img src='/static/fallingitems/card1.png' class='playingcard rot-left'>",
+    "<img src='/static/fallingitems/card2.png' class='playingcard rot-left'>",
+    "<img src='/static/fallingitems/card1.png' class='playingcard rot-right'>",
+    "<img src='/static/fallingitems/card2.png' class='playingcard rot-right'>",
+    "<img src='/static/fallingitems/tophat.png' class='playingcard rot-right invert'>",
+    "<img src='/static/fallingitems/tophat.png' class='playingcard rot-left invert'>",
+
+
+
+
 ];
 
 async function RandomObjectsFall() {
@@ -56,15 +62,8 @@ async function RandomObjectsFall() {
 
     item.className = "falling-item";
     item.innerHTML = html;
-    const minOffset = (5 / parseFloat(getComputedStyle(document.documentElement).fontSize)) * 100 / window.innerWidth * 100;
-    const edgeBias = minOffset + Math.pow(Math.random(), 5) * (90 - minOffset);
-
-    if (Math.random() < 0.5) {
-        item.style.left = edgeBias + "vw";
-    } else {
-        item.style.right = edgeBias + "vw";
-    }
-
+    item.style.left = Math.random() * 100 + "vw";
+    item.style.right = "auto";
 
     container.appendChild(item);
 
@@ -75,6 +74,6 @@ async function RandomObjectsFall() {
     });
 }
 
-setInterval(RandomObjectsFall, 2000);
+setInterval(RandomObjectsFall, 1000);
 
 
