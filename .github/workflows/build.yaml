@@ -30,7 +30,8 @@ jobs:
             jpegoptim \
             gifsicle \
             rsync \
-            zip
+            zip \
+            unzip
 
           npm install --global \
             html-minifier-terser \
@@ -38,7 +39,10 @@ jobs:
             terser
 
       - name: Prepare build directory
+        shell: bash
         run: |
+          set -euo pipefail
+
           rm -rf dist
           mkdir -p dist
 
@@ -50,20 +54,22 @@ jobs:
             --exclude='*.log' \
             ./ dist/
 
+          if ! find dist -type f -print -quit | grep -q .; then
+            echo "::error::Build directory is empty."
+            exit 1
+          fi
+
       - name: Minify HTML
         shell: bash
         run: |
-          set -euo pipefail
-
-          found=0
+          set -uo pipefail
 
           while IFS= read -r -d '' file; do
-            found=1
+            tmp="${file}.min.html"
+
             echo "Minifying HTML: $file"
 
-            tmp="${file}.min"
-
-            if ! html-minifier-terser \
+            if html-minifier-terser \
               --collapse-whitespace \
               --conservative-collapse \
               --remove-comments \
@@ -74,42 +80,54 @@ jobs:
               --minify-css \
               --minify-js \
               "$file" \
-              -o "$tmp"; then
-
-              echo "::error file=$file::HTML minification failed"
+              -o "$tmp" &&
+              [ -s "$tmp" ]; then
+              mv "$tmp" "$file"
+            else
+              echo "::warning file=$file::HTML minification failed; keeping original."
               rm -f "$tmp"
-              exit 1
             fi
-
-            mv "$tmp" "$file"
           done < <(find dist -type f -iname '*.html' -print0)
-
-          if [ "$found" -eq 0 ]; then
-            echo "No HTML files found; skipping."
-          fi
 
       - name: Minify CSS
         shell: bash
         run: |
-          set -euo pipefail
+          set -uo pipefail
 
           while IFS= read -r -d '' file; do
+            tmp="${file}.min.css"
+
             echo "Minifying CSS: $file"
-            cleancss -o "$file" "$file"
+
+            if cleancss -o "$tmp" "$file" && [ -s "$tmp" ]; then
+              mv "$tmp" "$file"
+            else
+              echo "::warning file=$file::CSS minification failed; keeping original."
+              rm -f "$tmp"
+            fi
           done < <(find dist -type f -iname '*.css' -print0)
-          
+
       - name: Minify JavaScript
         shell: bash
         run: |
-          set -euo pipefail
+          set -uo pipefail
 
           while IFS= read -r -d '' file; do
+            tmp="${file}.min.js"
+
             echo "Minifying JavaScript: $file"
-            terser "$file" \
+
+            if terser "$file" \
               --compress \
               --mangle \
               --comments false \
-              -o "$file"
+              -o "$tmp" &&
+              [ -s "$tmp" ]; then
+              mv "$tmp" "$file"
+            else
+              echo "::warning file=$file::JavaScript minification failed; keeping original."
+              rm -f "$tmp"
+            fi
           done < <(
             find dist -type f \
               \( -iname '*.js' -o -iname '*.mjs' \) \
@@ -120,54 +138,136 @@ jobs:
       - name: Losslessly optimise PNG images
         shell: bash
         run: |
-          set -euo pipefail
+          set -uo pipefail
 
           while IFS= read -r -d '' file; do
+            tmp="${file}.optimising.png"
+
             echo "Optimising PNG: $file"
-            optipng -o7 -quiet "$file"
+
+            if cp -p "$file" "$tmp" &&
+              optipng -o7 -quiet "$tmp" &&
+              [ -s "$tmp" ]; then
+              mv "$tmp" "$file"
+            else
+              echo "::warning file=$file::PNG optimisation failed; keeping original."
+              rm -f "$tmp"
+            fi
           done < <(find dist -type f -iname '*.png' -print0)
 
-      - name: Losslessly optimise JPEG images
+      - name: Optimise JPEG images
         shell: bash
         run: |
-          set -euo pipefail
+          set -uo pipefail
 
           while IFS= read -r -d '' file; do
+            tmp="${file}.optimising.jpg"
+
             echo "Optimising JPEG: $file"
-            jpegoptim \
-              --strip-all \
-              --all-progressive \
-              --max=100 \
-              --quiet \
-              "$file"
+
+            if cp -p "$file" "$tmp" &&
+              jpegoptim \
+                --strip-all \
+                --all-progressive \
+                --max=100 \
+                --quiet \
+                "$tmp" &&
+              [ -s "$tmp" ]; then
+              mv "$tmp" "$file"
+            else
+              echo "::warning file=$file::JPEG optimisation failed; keeping original."
+              rm -f "$tmp"
+            fi
           done < <(
             find dist -type f \
               \( -iname '*.jpg' -o -iname '*.jpeg' \) \
               -print0
           )
 
-      - name: Losslessly optimise GIF images
+      - name: Optimise GIF images
+        shell: bash
+        run: |
+          set -uo pipefail
+
+          while IFS= read -r -d '' file; do
+            tmp="${file}.optimising.gif"
+
+            echo "Optimising GIF: $file"
+
+            if cp -p "$file" "$tmp" &&
+              gifsicle --optimize=3 "$tmp" -o "$tmp.optimized" &&
+              [ -s "$tmp.optimized" ]; then
+              mv "$tmp.optimized" "$file"
+              rm -f "$tmp"
+            else
+              echo "::warning file=$file::GIF optimisation failed; keeping original."
+              rm -f "$tmp" "$tmp.optimized"
+            fi
+          done < <(find dist -type f -iname '*.gif' -print0)
+
+      - name: Verify build output
         shell: bash
         run: |
           set -euo pipefail
 
-          while IFS= read -r -d '' file; do
-            echo "Optimising GIF: $file"
-            gifsicle \
-              --batch \
-              --optimize=3 \
-              "$file"
-          done < <(find dist -type f -iname '*.gif' -print0)
+          if ! find dist -type f -print -quit | grep -q .; then
+            echo "::error::Build output contains no files."
+            exit 1
+          fi
+
+          if find dist -type f \
+            \( -name '*.min.html' \
+            -o -name '*.min.css' \
+            -o -name '*.min.js' \
+            -o -name '*.optimising.*' \
+            -o -name '*.optimized' \) \
+            -print -quit | grep -q .; then
+            echo "::error::Temporary optimisation files remain in the build."
+            exit 1
+          fi
+
+          echo "Build file count:"
+          find dist -type f | wc -l
+
+          echo "Build size:"
+          du -sh dist
 
       - name: Create release archive
+        shell: bash
         run: |
-          cd dist
-          zip -r -9 ../site-beta.zip .
-          cd ..
+          set -euo pipefail
+
+          rm -f site-beta.zip
+
+          (
+            cd dist
+            zip -q -r -9 ../site-beta.zip .
+          )
+
+          if [ ! -s site-beta.zip ]; then
+            echo "::error::Release archive is missing or empty."
+            exit 1
+          fi
+
+          zip -T site-beta.zip
+
+          if ! unzip -Z1 site-beta.zip | grep -q .; then
+            echo "::error::Release archive contains no entries."
+            exit 1
+          fi
+
+          echo "Archive entry count:"
+          unzip -Z1 site-beta.zip | wc -l
+
+          echo "Archive contents:"
+          unzip -l site-beta.zip
 
       - name: Generate beta version
         id: version
+        shell: bash
         run: |
+          set -euo pipefail
+
           VERSION="0.0.0-beta.${GITHUB_RUN_NUMBER}"
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
           echo "tag=v${VERSION}" >> "$GITHUB_OUTPUT"
@@ -175,7 +275,10 @@ jobs:
       - name: Publish GitHub beta release
         env:
           GH_TOKEN: ${{ github.token }}
+        shell: bash
         run: |
+          set -euo pipefail
+
           gh release create \
             "${{ steps.version.outputs.tag }}" \
             site-beta.zip \
