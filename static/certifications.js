@@ -13,7 +13,7 @@ var right = true; // stupid counter var. if left then right
 async function ConstructCard(title, content, id, imagehref, is_bigboy) {
     if (is_bigboy) {
         container.insertAdjacentHTML("beforeend", `
-        <!-- Project: ${title} -->
+        <!-- Cert/Acco: ${title} -->
         <div class="panel project-pane p-0 my-4">
             <h1 class="abs project-title font-patd">${title}</h1>
             <p class="abs project-desc font-ornate text-wrap">${content}</p>
