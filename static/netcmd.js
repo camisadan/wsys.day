@@ -191,7 +191,8 @@ async function CommandLoop() {
 
         Mime = Resp.headers.get("Content-Type").split(";")[0];
         await PrintTTY(`Located MimeType: ${Mime}`)
-        if (Mime === "application/x-shockwave-flash") {
+        if (Mime === "application/x-shockwave-flash" || Mime === "application/vnd.adobe.flash.movie") {
+            // application/vnd.adobe.flash.movie because sometimes Caddy likes to report the MIME funnily
             await PrintTTY("Attempting to execute Shockwave Flash via Ruffle.\nCTRL+B TO EXIT.");
 
             await import("/static/ruffle/ruffle.js");
