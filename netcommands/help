@@ -1,0 +1,56 @@
+
+Hello, Welcome to NeTTY.
+Ctrl + C to exit, Space to skip text typing.
+
+Commands:
+
+passwd.js - Set the password
+clear.js - Clears the screen
+cowsays.js - Makes a cow say anything after the command
+
+Media:
+
+    Games:
+
+
+        Flight of the Hamster
+        (Located @ swf/foth.swf)
+
+        Papa's Pizzaria
+        (Located @ swf/pizza.swf)
+
+        Doom 3 Demo
+        (To play, run open_url.js advgames/doom3/ )
+        
+        Windows XP Space Pinball
+        (To play, run open_url.js advgames/pinball/ )
+
+        Half-Life 1 / Counter Strike 1.6 
+        open_url.js advgames/hl1/
+
+        Half-Life 2
+        open_url.js advgames/hl2/
+
+        Portal 1
+        open_url.js advgames/portal1/
+
+    Music:
+
+        To see track locations for an album, type the album's location followed by /tracks.txt
+        e.g. music/albumname/tracks.txt
+
+        Currently Hosted Albums:
+
+        A Fever You Can't Sweat Out
+        by: Panic! At The Disco
+        (Located @ music/afycso)
+
+        
+
+    Video:
+    
+        Panic At The Disco: Live In Denver
+        (Located @ video/denver.mp4)
+
+        I Do Effemcheng
+        (Located @ video/effemcheng.mp4)
